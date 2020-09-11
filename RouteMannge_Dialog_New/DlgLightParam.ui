@@ -1,0 +1,1010 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>CDlgLightParam</class>
+ <widget class="QDialog" name="CDlgLightParam">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>953</width>
+    <height>687</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>手机外观检测光源设置</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">font: 75 12pt &quot;微软雅黑&quot;;</string>
+  </property>
+  <widget class="QComboBox" name="comboBox_ParamIndex">
+   <property name="geometry">
+    <rect>
+     <x>40</x>
+     <y>110</y>
+     <width>161</width>
+     <height>31</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="lineEdit_Channel0">
+   <property name="geometry">
+    <rect>
+     <x>160</x>
+     <y>150</y>
+     <width>121</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label">
+   <property name="geometry">
+    <rect>
+     <x>30</x>
+     <y>155</y>
+     <width>121</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>正面同轴光：</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_2">
+   <property name="geometry">
+    <rect>
+     <x>30</x>
+     <y>195</y>
+     <width>121</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>正面低角度[前]：</string>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="lineEdit_Channel1">
+   <property name="geometry">
+    <rect>
+     <x>160</x>
+     <y>190</y>
+     <width>121</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="lineEdit_Channel2">
+   <property name="geometry">
+    <rect>
+     <x>160</x>
+     <y>230</y>
+     <width>121</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_3">
+   <property name="geometry">
+    <rect>
+     <x>30</x>
+     <y>235</y>
+     <width>121</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>正面低角度[后]：</string>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="lineEdit_Channel3">
+   <property name="geometry">
+    <rect>
+     <x>160</x>
+     <y>270</y>
+     <width>121</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_4">
+   <property name="geometry">
+    <rect>
+     <x>30</x>
+     <y>275</y>
+     <width>121</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>正面左侧补光：</string>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="lineEdit_Channel4">
+   <property name="geometry">
+    <rect>
+     <x>160</x>
+     <y>310</y>
+     <width>121</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_5">
+   <property name="geometry">
+    <rect>
+     <x>30</x>
+     <y>315</y>
+     <width>121</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>正面右侧补光：</string>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="lineEdit_Channel7">
+   <property name="geometry">
+    <rect>
+     <x>470</x>
+     <y>270</y>
+     <width>121</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_6">
+   <property name="geometry">
+    <rect>
+     <x>330</x>
+     <y>235</y>
+     <width>131</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>中框同轴光[上]：</string>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="lineEdit_Channel5">
+   <property name="geometry">
+    <rect>
+     <x>470</x>
+     <y>190</y>
+     <width>121</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_7">
+   <property name="geometry">
+    <rect>
+     <x>330</x>
+     <y>275</y>
+     <width>131</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>中框同轴光[下]：</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_8">
+   <property name="geometry">
+    <rect>
+     <x>330</x>
+     <y>195</y>
+     <width>131</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>中框柱光：</string>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="lineEdit_Channel6">
+   <property name="geometry">
+    <rect>
+     <x>470</x>
+     <y>230</y>
+     <width>121</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="lineEdit_Channel12">
+   <property name="geometry">
+    <rect>
+     <x>790</x>
+     <y>310</y>
+     <width>121</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="lineEdit_Channel11">
+   <property name="geometry">
+    <rect>
+     <x>790</x>
+     <y>270</y>
+     <width>121</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="lineEdit_Channel10">
+   <property name="geometry">
+    <rect>
+     <x>790</x>
+     <y>230</y>
+     <width>121</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="lineEdit_Channel8">
+   <property name="geometry">
+    <rect>
+     <x>790</x>
+     <y>150</y>
+     <width>121</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="lineEdit_Channel9">
+   <property name="geometry">
+    <rect>
+     <x>790</x>
+     <y>190</y>
+     <width>121</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_9">
+   <property name="geometry">
+    <rect>
+     <x>640</x>
+     <y>310</y>
+     <width>121</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>反面右侧补光：</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_10">
+   <property name="geometry">
+    <rect>
+     <x>640</x>
+     <y>190</y>
+     <width>121</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>反面低角度[前]：</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_11">
+   <property name="geometry">
+    <rect>
+     <x>640</x>
+     <y>230</y>
+     <width>121</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>反面低角度[后]：</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_12">
+   <property name="geometry">
+    <rect>
+     <x>640</x>
+     <y>150</y>
+     <width>121</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>反面同轴光：</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_13">
+   <property name="geometry">
+    <rect>
+     <x>640</x>
+     <y>270</y>
+     <width>121</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>反面左侧补光：</string>
+   </property>
+  </widget>
+  <widget class="QGroupBox" name="groupBox">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>80</y>
+     <width>931</width>
+     <height>271</height>
+    </rect>
+   </property>
+   <property name="title">
+    <string>光源参数设置</string>
+   </property>
+  </widget>
+  <widget class="QPlainTextEdit" name="plainTextEdit_Show">
+   <property name="geometry">
+    <rect>
+     <x>290</x>
+     <y>10</y>
+     <width>651</width>
+     <height>61</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QComboBox" name="comboBox_ModelIndex">
+   <property name="geometry">
+    <rect>
+     <x>30</x>
+     <y>30</y>
+     <width>221</width>
+     <height>31</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QGroupBox" name="groupBox_2">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>0</y>
+     <width>261</width>
+     <height>71</height>
+    </rect>
+   </property>
+   <property name="title">
+    <string>模板名称</string>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="lineEdit_FrameUpExposureTime">
+   <property name="geometry">
+    <rect>
+     <x>160</x>
+     <y>405</y>
+     <width>121</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_14">
+   <property name="geometry">
+    <rect>
+     <x>30</x>
+     <y>410</y>
+     <width>121</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>曝光时间：</string>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="lineEdit_FrameDownExposureTime">
+   <property name="geometry">
+    <rect>
+     <x>460</x>
+     <y>405</y>
+     <width>121</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_15">
+   <property name="geometry">
+    <rect>
+     <x>330</x>
+     <y>410</y>
+     <width>121</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>曝光时间：</string>
+   </property>
+  </widget>
+  <widget class="QCheckBox" name="checkBox_EnableFrameUp">
+   <property name="geometry">
+    <rect>
+     <x>30</x>
+     <y>380</y>
+     <width>171</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">font: 75 12pt &quot;微软雅黑&quot;;</string>
+   </property>
+   <property name="text">
+    <string>使能中框上相机</string>
+   </property>
+  </widget>
+  <widget class="QCheckBox" name="checkBox_EnableFrameDown">
+   <property name="geometry">
+    <rect>
+     <x>330</x>
+     <y>380</y>
+     <width>171</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">font: 75 12pt &quot;微软雅黑&quot;;</string>
+   </property>
+   <property name="text">
+    <string>使能中框下相机</string>
+   </property>
+  </widget>
+  <widget class="QGroupBox" name="groupBox_3">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>360</y>
+     <width>931</width>
+     <height>401</height>
+    </rect>
+   </property>
+   <property name="title">
+    <string>曝光及光源亮度参数</string>
+   </property>
+   <widget class="QPushButton" name="pushButton_Save">
+    <property name="geometry">
+     <rect>
+      <x>550</x>
+      <y>280</y>
+      <width>121</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>保存参数</string>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="lineEdit_FocusExposureTime">
+    <property name="geometry">
+     <rect>
+      <x>760</x>
+      <y>50</y>
+      <width>121</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
+   <widget class="QCheckBox" name="checkBox_EnableFocus">
+    <property name="geometry">
+     <rect>
+      <x>630</x>
+      <y>25</y>
+      <width>171</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">font: 75 12pt &quot;微软雅黑&quot;;</string>
+    </property>
+    <property name="text">
+     <string>使能后置摄像头</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_16">
+    <property name="geometry">
+     <rect>
+      <x>630</x>
+      <y>55</y>
+      <width>121</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>曝光时间：</string>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="lineEdit_FocusGain">
+    <property name="geometry">
+     <rect>
+      <x>760</x>
+      <y>110</y>
+      <width>121</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
+   <widget class="QCheckBox" name="checkBox_EnableFrameDown1">
+    <property name="geometry">
+     <rect>
+      <x>320</x>
+      <y>75</y>
+      <width>171</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">font: 75 12pt &quot;微软雅黑&quot;;</string>
+    </property>
+    <property name="text">
+     <string>使能中框下相机</string>
+    </property>
+   </widget>
+   <widget class="QCheckBox" name="checkBox_EnableFocus1">
+    <property name="geometry">
+     <rect>
+      <x>630</x>
+      <y>80</y>
+      <width>171</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">font: 75 12pt &quot;微软雅黑&quot;;</string>
+    </property>
+    <property name="text">
+     <string>使能后置摄像头</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_18">
+    <property name="geometry">
+     <rect>
+      <x>630</x>
+      <y>115</y>
+      <width>121</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>增益：</string>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="lineEdit_FrameDownGain">
+    <property name="geometry">
+     <rect>
+      <x>450</x>
+      <y>105</y>
+      <width>121</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
+   <widget class="QCheckBox" name="checkBox_EnableFrameUp1">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>75</y>
+      <width>171</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">font: 75 12pt &quot;微软雅黑&quot;;</string>
+    </property>
+    <property name="text">
+     <string>使能中框上相机</string>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="lineEdit_FrameUpGain">
+    <property name="geometry">
+     <rect>
+      <x>150</x>
+      <y>105</y>
+      <width>121</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_19">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>110</y>
+      <width>121</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>增益：</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_20">
+    <property name="geometry">
+     <rect>
+      <x>320</x>
+      <y>110</y>
+      <width>121</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>增益：</string>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="lineEdit_FocusLightIntensity">
+    <property name="geometry">
+     <rect>
+      <x>200</x>
+      <y>290</y>
+      <width>121</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_17">
+    <property name="geometry">
+     <rect>
+      <x>70</x>
+      <y>295</y>
+      <width>121</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>摄像头光源亮度：</string>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="lineEdit_FrontGain">
+    <property name="geometry">
+     <rect>
+      <x>150</x>
+      <y>240</y>
+      <width>121</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
+   <widget class="QCheckBox" name="checkBox_EnableFrontGain">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>210</y>
+      <width>171</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">font: 75 12pt &quot;微软雅黑&quot;;</string>
+    </property>
+    <property name="text">
+     <string>使能前置摄像头</string>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="lineEdit_FrontExposureTime">
+    <property name="geometry">
+     <rect>
+      <x>150</x>
+      <y>175</y>
+      <width>121</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_21">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>245</y>
+      <width>121</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>增益：</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_22">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>180</y>
+      <width>121</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>曝光时间：</string>
+    </property>
+   </widget>
+   <widget class="QCheckBox" name="checkBox_EnableFrontExpo">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>145</y>
+      <width>171</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">font: 75 12pt &quot;微软雅黑&quot;;</string>
+    </property>
+    <property name="text">
+     <string>使能前置摄像头</string>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="lineEdit_NewGain">
+    <property name="geometry">
+     <rect>
+      <x>450</x>
+      <y>240</y>
+      <width>121</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_23">
+    <property name="geometry">
+     <rect>
+      <x>320</x>
+      <y>180</y>
+      <width>121</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>曝光时间：</string>
+    </property>
+   </widget>
+   <widget class="QCheckBox" name="checkBox_EnableNewGain">
+    <property name="geometry">
+     <rect>
+      <x>320</x>
+      <y>210</y>
+      <width>171</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">font: 75 12pt &quot;微软雅黑&quot;;</string>
+    </property>
+    <property name="text">
+     <string>使能前置听筒增益</string>
+    </property>
+   </widget>
+   <widget class="QCheckBox" name="checkBox_EnableNewExpo">
+    <property name="geometry">
+     <rect>
+      <x>320</x>
+      <y>145</y>
+      <width>171</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">font: 75 12pt &quot;微软雅黑&quot;;</string>
+    </property>
+    <property name="text">
+     <string>使能前置听筒曝光</string>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="lineEdit_NewExposureTime">
+    <property name="geometry">
+     <rect>
+      <x>450</x>
+      <y>175</y>
+      <width>121</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_24">
+    <property name="geometry">
+     <rect>
+      <x>320</x>
+      <y>245</y>
+      <width>121</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>增益：</string>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="lineEdit_FlashExposureTime">
+    <property name="geometry">
+     <rect>
+      <x>760</x>
+      <y>170</y>
+      <width>121</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_25">
+    <property name="geometry">
+     <rect>
+      <x>630</x>
+      <y>240</y>
+      <width>121</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>增益：</string>
+    </property>
+   </widget>
+   <widget class="QCheckBox" name="checkBox_EnableFlashExpo">
+    <property name="geometry">
+     <rect>
+      <x>630</x>
+      <y>140</y>
+      <width>171</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">font: 75 12pt &quot;微软雅黑&quot;;</string>
+    </property>
+    <property name="text">
+     <string>使能闪光灯曝光</string>
+    </property>
+   </widget>
+   <widget class="QCheckBox" name="checkBox_EnableFlashGain">
+    <property name="geometry">
+     <rect>
+      <x>630</x>
+      <y>205</y>
+      <width>171</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">font: 75 12pt &quot;微软雅黑&quot;;</string>
+    </property>
+    <property name="text">
+     <string>使能闪光灯增益</string>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="lineEdit_FlashGain">
+    <property name="geometry">
+     <rect>
+      <x>760</x>
+      <y>235</y>
+      <width>121</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_26">
+    <property name="geometry">
+     <rect>
+      <x>630</x>
+      <y>175</y>
+      <width>121</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>曝光时间：</string>
+    </property>
+   </widget>
+  </widget>
+  <zorder>groupBox_3</zorder>
+  <zorder>groupBox_2</zorder>
+  <zorder>groupBox</zorder>
+  <zorder>comboBox_ParamIndex</zorder>
+  <zorder>lineEdit_Channel0</zorder>
+  <zorder>label</zorder>
+  <zorder>label_2</zorder>
+  <zorder>lineEdit_Channel1</zorder>
+  <zorder>lineEdit_Channel2</zorder>
+  <zorder>label_3</zorder>
+  <zorder>lineEdit_Channel3</zorder>
+  <zorder>label_4</zorder>
+  <zorder>lineEdit_Channel4</zorder>
+  <zorder>label_5</zorder>
+  <zorder>lineEdit_Channel7</zorder>
+  <zorder>label_6</zorder>
+  <zorder>lineEdit_Channel5</zorder>
+  <zorder>label_7</zorder>
+  <zorder>label_8</zorder>
+  <zorder>lineEdit_Channel6</zorder>
+  <zorder>lineEdit_Channel12</zorder>
+  <zorder>lineEdit_Channel11</zorder>
+  <zorder>lineEdit_Channel10</zorder>
+  <zorder>lineEdit_Channel8</zorder>
+  <zorder>lineEdit_Channel9</zorder>
+  <zorder>label_9</zorder>
+  <zorder>label_10</zorder>
+  <zorder>label_11</zorder>
+  <zorder>label_12</zorder>
+  <zorder>label_13</zorder>
+  <zorder>plainTextEdit_Show</zorder>
+  <zorder>comboBox_ModelIndex</zorder>
+  <zorder>lineEdit_FrameUpExposureTime</zorder>
+  <zorder>label_14</zorder>
+  <zorder>lineEdit_FrameDownExposureTime</zorder>
+  <zorder>label_15</zorder>
+  <zorder>checkBox_EnableFrameUp</zorder>
+  <zorder>checkBox_EnableFrameDown</zorder>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

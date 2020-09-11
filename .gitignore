@@ -1,0 +1,17 @@
+*.user
+*.user.*
+*.zip
+*.rar
+*.via
+*.tmp
+*.err
+*.idb
+*.pch
+*.vs
+*.log
+*.tlog
+*.db
+*.ipch
+*.bsc
+*.aps
+*.opt

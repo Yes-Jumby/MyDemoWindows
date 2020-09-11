@@ -1,0 +1,57 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: OutputBmp - Win32 Debug--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating command line "rc.exe /l 0x804 /fo"Debug/OutputBmp.res" /d "_DEBUG" /d "_AFXDLL" "E:\工作\4月\Visual C++从入门到精通（第2版）6.8\TM\sl\12\12\OutputBmp\OutputBmp.rc"" 
+Creating temporary file "C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSP7.tmp" with contents
+[
+/nologo /MDd /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_AFXDLL" /D "_MBCS" /FR"Debug/" /Fp"Debug/OutputBmp.pch" /Yu"stdafx.h" /Fo"Debug/" /Fd"Debug/" /FD /GZ /c 
+"E:\工作\4月\Visual C++从入门到精通（第2版）6.8\TM\sl\12\12\OutputBmp\MainFrm.cpp"
+"E:\工作\4月\Visual C++从入门到精通（第2版）6.8\TM\sl\12\12\OutputBmp\OutputBmp.cpp"
+"E:\工作\4月\Visual C++从入门到精通（第2版）6.8\TM\sl\12\12\OutputBmp\OutputBmpDoc.cpp"
+"E:\工作\4月\Visual C++从入门到精通（第2版）6.8\TM\sl\12\12\OutputBmp\OutputBmpView.cpp"
+]
+Creating command line "cl.exe @C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSP7.tmp" 
+Creating temporary file "C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSPA.tmp" with contents
+[
+/nologo /MDd /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_AFXDLL" /D "_MBCS" /FR"Debug/" /Fp"Debug/OutputBmp.pch" /Yc"stdafx.h" /Fo"Debug/" /Fd"Debug/" /FD /GZ /c 
+"E:\工作\4月\Visual C++从入门到精通（第2版）6.8\TM\sl\12\12\OutputBmp\StdAfx.cpp"
+]
+Creating command line "cl.exe @C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSPA.tmp" 
+Creating temporary file "C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSPB.tmp" with contents
+[
+/nologo /subsystem:windows /incremental:yes /pdb:"Debug/OutputBmp.pdb" /debug /machine:I386 /out:"Debug/OutputBmp.exe" /pdbtype:sept 
+".\Debug\MainFrm.obj"
+".\Debug\OutputBmp.obj"
+".\Debug\OutputBmpDoc.obj"
+".\Debug\OutputBmpView.obj"
+".\Debug\StdAfx.obj"
+".\Debug\OutputBmp.res"
+]
+Creating command line "link.exe @C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSPB.tmp"
+<h3>Output Window</h3>
+Compiling resources...
+Compiling...
+StdAfx.cpp
+Compiling...
+MainFrm.cpp
+OutputBmp.cpp
+OutputBmpDoc.cpp
+OutputBmpView.cpp
+Generating Code...
+Linking...
+Creating command line "bscmake.exe /nologo /o"Debug/OutputBmp.bsc"  ".\Debug\StdAfx.sbr" ".\Debug\MainFrm.sbr" ".\Debug\OutputBmp.sbr" ".\Debug\OutputBmpDoc.sbr" ".\Debug\OutputBmpView.sbr""
+Creating browse info file...
+<h3>Output Window</h3>
+
+
+
+<h3>Results</h3>
+OutputBmp.exe - 0 error(s), 0 warning(s)
+</pre>
+</body>
+</html>

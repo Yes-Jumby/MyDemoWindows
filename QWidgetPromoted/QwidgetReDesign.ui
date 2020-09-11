@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>CQwidgetReDesign</class>
+ <widget class="QWidget" name="CQwidgetReDesign">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>619</width>
+    <height>470</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Form</string>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout_2">
+   <item>
+    <layout class="QHBoxLayout" name="horizontalLayout_2" stretch="4,1">
+     <item>
+      <layout class="QVBoxLayout" name="verticalLayout" stretch="6,1">
+       <item>
+        <widget class="QWidgetForModel" name="widget_Modelshow" native="true"/>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout">
+         <item>
+          <widget class="MyWidget" name="widget_ErrorIMG1" native="true"/>
+         </item>
+         <item>
+          <widget class="MyWidget" name="widget_ErrorIMG2" native="true"/>
+         </item>
+         <item>
+          <widget class="MyWidget" name="widget_ErrorIMG3" native="true"/>
+         </item>
+         <item>
+          <widget class="MyWidget" name="widget_ErrorIMG4" native="true"/>
+         </item>
+        </layout>
+       </item>
+      </layout>
+     </item>
+     <item>
+      <widget class="MyWidget" name="widget_Info" native="true"/>
+     </item>
+    </layout>
+   </item>
+  </layout>
+ </widget>
+ <customwidgets>
+  <customwidget>
+   <class>QWidgetForModel</class>
+   <extends>QWidget</extends>
+   <header location="global">QWidgetForModel.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>MyWidget</class>
+   <extends>QWidget</extends>
+   <header>mywidget.h</header>
+   <container>1</container>
+  </customwidget>
+ </customwidgets>
+ <resources/>
+ <connections/>
+</ui>

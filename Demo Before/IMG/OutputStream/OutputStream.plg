@@ -1,0 +1,54 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: OutputStream - Win32 Debug--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating command line "rc.exe /l 0x804 /fo"Debug/OutputStream.res" /d "_DEBUG" /d "_AFXDLL" "E:\工作\4月\Visual C++从入门到精通（第2版）6.8\TM\sl\12\14\OutputStream\OutputStream.rc"" 
+Creating temporary file "C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSP12.tmp" with contents
+[
+/nologo /MDd /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_AFXDLL" /D "_MBCS" /Fp"Debug/OutputStream.pch" /Yu"stdafx.h" /Fo"Debug/" /Fd"Debug/" /FD /GZ /c 
+"E:\工作\4月\Visual C++从入门到精通（第2版）6.8\TM\sl\12\14\OutputStream\MainFrm.cpp"
+"E:\工作\4月\Visual C++从入门到精通（第2版）6.8\TM\sl\12\14\OutputStream\OutputStream.cpp"
+"E:\工作\4月\Visual C++从入门到精通（第2版）6.8\TM\sl\12\14\OutputStream\OutputStreamDoc.cpp"
+"E:\工作\4月\Visual C++从入门到精通（第2版）6.8\TM\sl\12\14\OutputStream\OutputStreamView.cpp"
+]
+Creating command line "cl.exe @C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSP12.tmp" 
+Creating temporary file "C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSP13.tmp" with contents
+[
+/nologo /MDd /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_AFXDLL" /D "_MBCS" /Fp"Debug/OutputStream.pch" /Yc"stdafx.h" /Fo"Debug/" /Fd"Debug/" /FD /GZ /c 
+"E:\工作\4月\Visual C++从入门到精通（第2版）6.8\TM\sl\12\14\OutputStream\StdAfx.cpp"
+]
+Creating command line "cl.exe @C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSP13.tmp" 
+Creating temporary file "C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSP64.tmp" with contents
+[
+/nologo /subsystem:windows /incremental:yes /pdb:"Debug/OutputStream.pdb" /debug /machine:I386 /out:"Debug/OutputStream.exe" /pdbtype:sept 
+".\Debug\MainFrm.obj"
+".\Debug\OutputStream.obj"
+".\Debug\OutputStreamDoc.obj"
+".\Debug\OutputStreamView.obj"
+".\Debug\StdAfx.obj"
+".\Debug\OutputStream.res"
+]
+Creating command line "link.exe @C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSP64.tmp"
+<h3>Output Window</h3>
+Compiling resources...
+Compiling...
+StdAfx.cpp
+Compiling...
+MainFrm.cpp
+OutputStream.cpp
+OutputStreamDoc.cpp
+OutputStreamView.cpp
+Generating Code...
+Linking...
+
+
+
+<h3>Results</h3>
+OutputStream.exe - 0 error(s), 0 warning(s)
+</pre>
+</body>
+</html>

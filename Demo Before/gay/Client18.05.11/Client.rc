@@ -1,0 +1,271 @@
+// Microsoft Visual C++ generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "afxres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// 中文(简体，中国) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_CHS)
+LANGUAGE LANG_CHINESE, SUBLANG_CHINESE_SIMPLIFIED
+#pragma code_page(936)
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE 
+BEGIN
+    "#include ""afxres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE 
+BEGIN
+    "#define _AFX_NO_SPLITTER_RESOURCES\r\n"
+    "#define _AFX_NO_OLE_RESOURCES\r\n"
+    "#define _AFX_NO_TRACKER_RESOURCES\r\n"
+    "#define _AFX_NO_PROPERTY_RESOURCES\r\n"
+    "\r\n"
+    "#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_CHS)\r\n"
+    "#ifdef _WIN32\r\n"
+    "LANGUAGE 4, 2\r\n"
+    "#pragma code_page(936)\r\n"
+    "#endif //_WIN32\r\n"
+    "#include ""res\\Client.rc2""  // non-Microsoft Visual C++ edited resources\r\n"
+    "#include ""l.chs\\afxres.rc""          // Standard components\r\n"
+    "#endif\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Icon
+//
+
+// Icon with lowest ID value placed first to ensure application icon
+// remains consistent on all systems.
+IDI_ICON1               ICON                    "res\\42.ico"
+
+IDR_MAINFRAME           ICON                    "res\\Client.ico"
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_ABOUTBOX DIALOG 0, 0, 235, 55
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "关于 Client"
+FONT 9, "宋体"
+BEGIN
+    ICON            IDR_MAINFRAME,IDC_STATIC,11,17,20,20
+    LTEXT           "Client 1.0 版",IDC_STATIC,40,10,119,8,SS_NOPREFIX
+    LTEXT           "版权所有 (C) 2008",IDC_STATIC,40,25,119,8
+    DEFPUSHBUTTON   "确定",IDOK,178,7,50,14,WS_GROUP
+END
+
+IDD_CLIENT_DIALOG DIALOGEX 0, 0, 736, 289
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
+EXSTYLE WS_EX_CLIENTEDGE | WS_EX_APPWINDOW
+CAPTION "PLC Demo 2018年7月27日"
+FONT 9, "宋体", 0, 0, 0x1
+BEGIN
+    PUSHBUTTON      "关闭",IDC_SENDTEXT,503,264,49,15
+    PUSHBUTTON      "正向运行",IDC_LOGIN,527,25,50,14
+    EDITTEXT        IDC_EDIT_PORT,64,40,107,14,ES_CENTER | ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT_IP,63,13,107,14,ES_CENTER | ES_AUTOHSCROLL
+    GROUPBOX        "服务器设置",IDC_STATIC,8,3,170,79
+    LTEXT           "IP地址:",IDC_STATIC,25,18,35,17
+    LTEXT           "端口号:",IDC_STATIC,24,38,32,17
+    PUSHBUTTON      "连接",IDC_BUTTON1,55,63,56,13
+    GROUPBOX        "电机控制",IDC_STATIC,513,7,160,63
+    EDITTEXT        IDC_EDIT_Return,218,17,279,47,ES_MULTILINE,WS_EX_LEFTSCROLLBAR
+    PUSHBUTTON      "反向运行",IDC_BTN_Back,587,26,50,14
+    PUSHBUTTON      "停止运行",IDC_BTN_Stop,565,44,50,14
+    GROUPBOX        "写参数",IDC_STATIC,8,88,370,165
+    EDITTEXT        IDC_EDIT_Speed,15,120,43,16,ES_AUTOHSCROLL
+    PUSHBUTTON      "运行速度",IDC_BTN_Speed,71,118,43,18
+    EDITTEXT        IDC_EDIT_StarSpeed,15,142,43,16,ES_AUTOHSCROLL
+    PUSHBUTTON      "起始速度",IDC_BTN_StarSpeed,71,140,44,18
+    EDITTEXT        IDC_EDIT_ACC,15,166,43,16,ES_AUTOHSCROLL
+    PUSHBUTTON      "加速度",IDC_BTN_ACC,71,164,43,18
+    EDITTEXT        IDC_EDIT_DEC,15,188,43,16,ES_AUTOHSCROLL
+    PUSHBUTTON      "减速度",IDC_BTN_DEC,71,186,43,18
+    PUSHBUTTON      "写入硬件",IDC_BTN_Trig,40,208,55,18
+    GROUPBOX        "读参数",IDC_STATIC,388,88,340,166
+    PUSHBUTTON      "运行速度",IDC_BTN_SpeedRead,399,117,55,18
+    PUSHBUTTON      "起始速度",IDC_BTN_StarSpeedRead,399,139,55,18
+    PUSHBUTTON      "加速度",IDC_BTN_ACCRead,399,162,55,18
+    PUSHBUTTON      "减速度",IDC_BTN_DECRead,399,185,55,18
+    PUSHBUTTON      "起始字",IDC_BTN_StarStopWord,464,118,55,18
+    PUSHBUTTON      "触发字",IDC_BTN_TrigWord,464,140,55,18
+    PUSHBUTTON      "电机状态",IDC_BTN_MotorStatus,464,163,55,18
+    PUSHBUTTON      "编码器行数",IDC_BTN_EncoderLine,464,185,55,18
+    PUSHBUTTON      "编码器圈数",IDC_BTN_EncoderCircle,464,208,55,18
+    GROUPBOX        "超声波传感器",IDC_STATIC,540,98,180,151
+    GROUPBOX        "传感器1",IDC_STATIC,548,109,74,65
+    PUSHBUTTON      "圈数",IDC_BTN_Sensor1Circle,558,124,55,18
+    PUSHBUTTON      "行数",IDC_BTN_Sensor2Line,558,148,55,18
+    PUSHBUTTON      "圈数",IDC_BTN_Sensor2Circle,643,122,55,18
+    PUSHBUTTON      "行数",IDC_BTN_Sensor2Line2,643,146,55,18
+    PUSHBUTTON      "圈数",IDC_BTN_Sensor3Circle,556,193,55,18
+    PUSHBUTTON      "行数",IDC_BTN_Sensor3Line,556,217,55,18
+    PUSHBUTTON      "圈数",IDC_BTN_Sensor4Circle,643,191,55,18
+    PUSHBUTTON      "行数",IDC_BTN_Sensor4Line,643,215,55,18
+    GROUPBOX        "电机及编码器",IDC_STATIC,392,99,140,133
+    GROUPBOX        "传感器延时设置",IDC_STATIC,128,107,124,109
+    EDITTEXT        IDC_EDIT_Sensor1,135,120,43,16,ES_AUTOHSCROLL
+    PUSHBUTTON      "传感器1",IDC_BTN_Sensor1,191,118,47,18
+    EDITTEXT        IDC_EDIT_Sensor2,135,142,43,16,ES_AUTOHSCROLL
+    PUSHBUTTON      "传感器2",IDC_BTN_Sensor2,191,140,48,18
+    EDITTEXT        IDC_EDIT_Sensor3,135,166,43,16,ES_AUTOHSCROLL
+    PUSHBUTTON      "传感器3",IDC_BTN_Sensor3,191,164,48,18
+    EDITTEXT        IDC_EDIT_Sensor4,135,188,43,16,ES_AUTOHSCROLL
+    PUSHBUTTON      "传感器4",IDC_BTN_Sensor4,191,186,48,18
+    GROUPBOX        "传感器2",IDC_STATIC,633,109,74,65
+    GROUPBOX        "传感器4",IDC_STATIC,633,177,74,65
+    GROUPBOX        "传感器3",IDC_STATIC,548,179,74,65
+    EDITTEXT        IDC_EDIT_CircleNum,266,124,43,16,ES_AUTOHSCROLL
+    PUSHBUTTON      "圈数",IDC_BTN_CircleNum,322,122,42,18
+    EDITTEXT        IDC_EDIT_LineNum,266,146,43,16,ES_AUTOHSCROLL
+    PUSHBUTTON      "行数",IDC_BTN_LineNum,322,144,42,18
+    EDITTEXT        IDC_EDIT_Result,266,170,43,16,ES_AUTOHSCROLL
+    PUSHBUTTON      "结果",IDC_BTN_Result,322,168,41,18
+    GROUPBOX        "PC编码器设置",IDC_STATIC,256,107,117,109
+    GROUPBOX        "电机设置",IDC_STATIC,11,107,114,127
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Version
+//
+
+VS_VERSION_INFO VERSIONINFO
+ FILEVERSION 1,0,0,1
+ PRODUCTVERSION 1,0,0,1
+ FILEFLAGSMASK 0x3fL
+#ifdef _DEBUG
+ FILEFLAGS 0x1L
+#else
+ FILEFLAGS 0x0L
+#endif
+ FILEOS 0x4L
+ FILETYPE 0x1L
+ FILESUBTYPE 0x0L
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "080404B0"
+        BEGIN
+            VALUE "FileDescription", "Client Microsoft 基础类应用程序"
+            VALUE "FileVersion", "1, 0, 0, 1"
+            VALUE "InternalName", "Client"
+            VALUE "LegalCopyright", "版权所有 (C) 2008"
+            VALUE "OriginalFilename", "Client.EXE"
+            VALUE "ProductName", "Client 应用程序"
+            VALUE "ProductVersion", "1, 0, 0, 1"
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x804, 1200
+    END
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO
+BEGIN
+    IDD_ABOUTBOX, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 228
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 48
+    END
+
+    IDD_CLIENT_DIALOG, DIALOG
+    BEGIN
+        RIGHTMARGIN, 729
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 282
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// AFX_DIALOG_LAYOUT
+//
+
+IDD_CLIENT_DIALOG AFX_DIALOG_LAYOUT
+BEGIN
+    0
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// String Table
+//
+
+STRINGTABLE
+BEGIN
+    IDS_ABOUTBOX            "关于 Client(&A)..."
+END
+
+#endif    // 中文(简体，中国) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+#define _AFX_NO_SPLITTER_RESOURCES
+#define _AFX_NO_OLE_RESOURCES
+#define _AFX_NO_TRACKER_RESOURCES
+#define _AFX_NO_PROPERTY_RESOURCES
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_CHS)
+#ifdef _WIN32
+LANGUAGE 4, 2
+#pragma code_page(936)
+#endif //_WIN32
+#include "res\Client.rc2"  // non-Microsoft Visual C++ edited resources
+#include "l.chs\afxres.rc"          // Standard components
+#endif
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

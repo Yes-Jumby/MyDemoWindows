@@ -1,0 +1,39 @@
+#if defined(UNDER_CE)
+#include <winbase.h>
+#else
+#include <winver.h>
+#endif
+IDI_ICON1           ICON   DISCARDABLE   "imac.ico"
+VS_VERSION_INFO VERSIONINFO
+    FILEVERSION 1,0,0,3
+    PRODUCTVERSION 1,0,0,3
+    FILEFLAGSMASK 0x3fL
+#ifdef _DEBUG
+    FILEFLAGS VS_FF_DEBUG
+#else
+    FILEFLAGS 0x0L
+#endif
+    FILEOS VOS__WINDOWS32
+    FILETYPE VFT_DLL
+    FILESUBTYPE 0x0L
+    BEGIN
+        BLOCK "StringFileInfo"
+        BEGIN
+            BLOCK "080404b0"
+            BEGIN
+                VALUE "CompanyName", "博众精工北京技术研究院"
+                VALUE "FileDescription", "手机外观轨迹参数设置"
+                VALUE "FileVersion", "1.0.0.3"
+                VALUE "InternalName", "手机外观轨迹参数设置"
+                VALUE "LegalCopyright", "Copyright (c) 2019, 博众精工北京技术研究院"
+                VALUE "OriginalFilename", "手机外观轨迹参数设置"
+                VALUE "ProductName", "手机外观轨迹参数设置"
+                VALUE "ProductVersion", "1.0.0.3"
+                VALUE "LegalTrademarks", "博众精工北京技术研究院"
+            END
+        END
+        BLOCK "VarFileInfo"
+        BEGIN
+            VALUE "Translation", 0x804, 1200
+        END
+    END

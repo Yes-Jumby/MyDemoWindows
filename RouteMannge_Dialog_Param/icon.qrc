@@ -1,0 +1,7 @@
+<RCC>
+    <qresource prefix="/image"/>
+    <qresource prefix="/">
+        <file>Res/imac.ico</file>
+        <file>Res/version.rc</file>
+    </qresource>
+</RCC>
