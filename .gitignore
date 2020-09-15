@@ -15,3 +15,9 @@
 *.bsc
 *.aps
 *.opt
+*.txt
+*.iobj
+*.ipdb
+*.pdb
+*.obj
+*.opendb

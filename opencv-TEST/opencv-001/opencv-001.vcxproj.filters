@@ -1,0 +1,107 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="源文件">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="头文件">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="资源文件">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="源文件\before">
+      <UniqueIdentifier>{cf0545f9-6376-494e-986e-af96c1c36763}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\2006">
+      <UniqueIdentifier>{c2b98375-747f-4e45-8f43-fcb12fe47fc5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\dynamic program">
+      <UniqueIdentifier>{ceeef02e-7921-4305-a3b8-3fdbcc2891d6}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="200421.cpp">
+      <Filter>源文件\before</Filter>
+    </ClCompile>
+    <ClCompile Include="200422.cpp">
+      <Filter>源文件\before</Filter>
+    </ClCompile>
+    <ClCompile Include="200423.cpp">
+      <Filter>源文件\before</Filter>
+    </ClCompile>
+    <ClCompile Include="200426.cpp">
+      <Filter>源文件\before</Filter>
+    </ClCompile>
+    <ClCompile Include="main.cpp">
+      <Filter>源文件\before</Filter>
+    </ClCompile>
+    <ClCompile Include="stdthread_200528.cpp">
+      <Filter>源文件\before</Filter>
+    </ClCompile>
+    <ClCompile Include="vector200529.cpp">
+      <Filter>源文件\before</Filter>
+    </ClCompile>
+    <ClCompile Include="YX.cpp">
+      <Filter>源文件\before</Filter>
+    </ClCompile>
+    <ClCompile Include="标定.cpp">
+      <Filter>源文件\before</Filter>
+    </ClCompile>
+    <ClCompile Include="图像校正.cpp">
+      <Filter>源文件\before</Filter>
+    </ClCompile>
+    <ClCompile Include="源.cpp">
+      <Filter>源文件\before</Filter>
+    </ClCompile>
+    <ClCompile Include="ifstream.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="stdlockandmutex.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="readAndWriteDat.cpp">
+      <Filter>源文件\2006</Filter>
+    </ClCompile>
+    <ClCompile Include="std_map.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="stdmutex.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="condition.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="dynamicprogramming.cpp">
+      <Filter>源文件\dynamic program</Filter>
+    </ClCompile>
+    <ClCompile Include="背包问题.cpp">
+      <Filter>源文件\dynamic program</Filter>
+    </ClCompile>
+    <ClCompile Include="200907.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="数值解.cpp">
+      <Filter>源文件\before</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="copy.bat">
+      <Filter>源文件</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="readAndWriteDat.h">
+      <Filter>源文件\2006</Filter>
+    </ClInclude>
+    <ClInclude Include="SpendTime.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="hello.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
