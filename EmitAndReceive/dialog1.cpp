@@ -6,7 +6,7 @@ Dialog1::Dialog1(QWidget *parent) :
     ui(new Ui::Dialog1)
 {
     ui->setupUi(this);
-    qRegisterMetaType<point>("point");
+    //qRegisterMetaType<point>("point");
 
 }
 

@@ -1,6 +1,10 @@
 #include <iostream>
 #include <cstring>
-
+/*
+    8 * x - 3*y + 2 * z = 20
+    4 * x + 11 * y - z = 33
+    6 * x + 3 * y + 12 * z = 36
+*/
 using namespace std;
 double fun1(double x, double y, double z)
 {

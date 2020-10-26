@@ -6,8 +6,8 @@
 #include <vector>
 #include <QListView>
 #include <QTableWidget>
-#include "AlgDataType.h"
-#include "AlgInspector.h"
+//#include "AlgDataType.h"
+//#include "AlgInspector.h"
 #include "MyLabel.h"
 
 #pragma execution_character_set("utf-8")
@@ -52,7 +52,7 @@ private slots:
 
 private:
     bool AddTableFileValue(int index);
-    bool AddTableDefectValue(const s_AlgDefectInfo &s_AlgDefectInfo);
+    //bool AddTableDefectValue(const s_AlgDefectInfo &s_AlgDefectInfo);
 private:
     Ui::AlgorithmTest *ui;
     QString m_FilePath;        //文件夹路径
@@ -85,10 +85,10 @@ private:
     QTableWidget *m_pTableFiles;
     QTableWidget *m_pTableDefects;
     //算法相关
-    CAlgInspector *AlgInspector;
-    s_AlgInitParam m_sAlgInitParam;
-    s_AlgCheckOutputParam m_sAlgOutParam;
-    s_AlgCheckInputParam m_sAlgInParam;
+//    CAlgInspector *AlgInspector;
+//    s_AlgInitParam m_sAlgInitParam;
+//    s_AlgCheckOutputParam m_sAlgOutParam;
+//    s_AlgCheckInputParam m_sAlgInParam;
     QVector<QRect> m_vecErrorRect;
 
     BITMAPFILEHEADER m_FILE_HEADER; //文件头;

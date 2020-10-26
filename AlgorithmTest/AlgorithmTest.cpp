@@ -46,7 +46,7 @@ AlgorithmTest::AlgorithmTest(QWidget *parent) :
     ui->pushButton_ContinuFrame->setEnabled(false);
 
     //初始化算法
-    AlgInspector = new CAlgInspector();
+    //AlgInspector = new CAlgInspector();
 
     //初始化类成员变量
     m_pCurrentImgData = nullptr;
@@ -182,12 +182,12 @@ AlgorithmTest::AlgorithmTest(QWidget *parent) :
 
 AlgorithmTest::~AlgorithmTest()
 {
-    if(AlgInspector !=nullptr)
-    {
-        AlgInspector->Free();
-		delete AlgInspector;
-		AlgInspector = nullptr;
-    }
+//    if(AlgInspector !=nullptr)
+//    {
+//        AlgInspector->Free();
+//		delete AlgInspector;
+//		AlgInspector = nullptr;
+//    }
     if(m_pCurrentImgData !=nullptr)
     {
         //delete []m_pCurrentImgData;
@@ -344,64 +344,64 @@ void AlgorithmTest::on_pushButton_SingleFrame_clicked()//单帧检测
     file = nullptr;
     //显示图像
     ui->label_1->ShowOriginalImage(m_pCurrentImgInfo,m_iWidth, m_iHeight);
-    //设置算法输入参数
-    m_sAlgInParam.vecPbuffer.clear();
-    m_sAlgOutParam.vecDefInfo.clear();
-    m_vecErrorRect.clear();
+//    //设置算法输入参数
+//    m_sAlgInParam.vecPbuffer.clear();
+//    m_sAlgOutParam.vecDefInfo.clear();
+//    m_vecErrorRect.clear();
 
-    m_sAlgInParam.strBatchNo = "0";
-    m_sAlgInParam.strProductNo = "0";
+//    m_sAlgInParam.strBatchNo = "0";
+//    m_sAlgInParam.strProductNo = "0";
 
-    m_sAlgInParam.iPageIndex = m_iPageIndex;
-    m_sAlgInParam.iImageHeight = m_iHeight;
-    m_sAlgInParam.iImageWidth = m_iWidth;
-    m_sAlgInParam.iImageChannel = m_iChannel;
-    m_sAlgInParam.dbResolutionH = m_dbResolutionH;
-    m_sAlgInParam.dbResolutionV = m_dbResolutionV;
+//    m_sAlgInParam.iPageIndex = m_iPageIndex;
+//    m_sAlgInParam.iImageHeight = m_iHeight;
+//    m_sAlgInParam.iImageWidth = m_iWidth;
+//    m_sAlgInParam.iImageChannel = m_iChannel;
+//    m_sAlgInParam.dbResolutionH = m_dbResolutionH;
+//    m_sAlgInParam.dbResolutionV = m_dbResolutionV;
 
-    m_sAlgInParam.vecPbuffer.push_back(m_pCurrentImgData);
-    m_sAlgInParam.sReferParam.bNeedRefParam = true;
-    m_sAlgInParam.sReferParam.pInputParam = &m_sAlgInParam;
-    m_sAlgInParam.sReferParam.pOutParam = &m_sAlgOutParam;
+//    m_sAlgInParam.vecPbuffer.push_back(m_pCurrentImgData);
+//    m_sAlgInParam.sReferParam.bNeedRefParam = true;
+//    m_sAlgInParam.sReferParam.pInputParam = &m_sAlgInParam;
+//    m_sAlgInParam.sReferParam.pOutParam = &m_sAlgOutParam;
 
 
-    //算法检测
-    if(AlgInspector->GCheck(m_sAlgInParam, m_sAlgOutParam))
-    {
-		m_sAlgOutParam.eResultFlag = RESULT_OK;
+//    //算法检测
+//    if(AlgInspector->GCheck(m_sAlgInParam, m_sAlgOutParam))
+//    {
+//		m_sAlgOutParam.eResultFlag = RESULT_OK;
 
-        ui->textEdit_show->append(str1);
-        ui->textEdit_show->append("单帧算法检测成功！");
-        if(m_sAlgOutParam.eResultFlag == RESULT_OK)
-        {
-            ui->textEdit_show->append("该图像为良品！");
-            return ;
-        }
-        else
-        {
-            int size = (int)m_sAlgOutParam.vecDefInfo.size();
-            if(size > 0)
-            {
-                for(int i = 0; i < size ;i++)
-                {
-                    AddTableDefectValue(m_sAlgOutParam.vecDefInfo[i]);
-                    ARect Arect = m_sAlgOutParam.vecDefInfo[i].nRect;
-                    QRect rect;
-                    rect.setLeft(Arect.left);
-                    rect.setTop(Arect.top);
-                    rect.setBottom(Arect.bottom);
-                    rect.setRight(Arect.right);
-                    m_vecErrorRect.push_back(rect);
-                }
-                ui->label_1->ShowAlgedImage(m_vecErrorRect);
-                m_vecErrorRect.clear();
-            }
-        }
-    }
-    else
-    {
-        ui->textEdit_show->append("单帧算法检测失败！");
-    }
+//        ui->textEdit_show->append(str1);
+//        ui->textEdit_show->append("单帧算法检测成功！");
+//        if(m_sAlgOutParam.eResultFlag == RESULT_OK)
+//        {
+//            ui->textEdit_show->append("该图像为良品！");
+//            return ;
+//        }
+//        else
+//        {
+//            int size = (int)m_sAlgOutParam.vecDefInfo.size();
+//            if(size > 0)
+//            {
+//                for(int i = 0; i < size ;i++)
+//                {
+//                    AddTableDefectValue(m_sAlgOutParam.vecDefInfo[i]);
+//                    ARect Arect = m_sAlgOutParam.vecDefInfo[i].nRect;
+//                    QRect rect;
+//                    rect.setLeft(Arect.left);
+//                    rect.setTop(Arect.top);
+//                    rect.setBottom(Arect.bottom);
+//                    rect.setRight(Arect.right);
+//                    m_vecErrorRect.push_back(rect);
+//                }
+//                ui->label_1->ShowAlgedImage(m_vecErrorRect);
+//                m_vecErrorRect.clear();
+//            }
+//        }
+//    }
+//    else
+//    {
+//        ui->textEdit_show->append("单帧算法检测失败！");
+//    }
 }
 
 void AlgorithmTest::on_pushButton_ContinuFrame_clicked()//多帧检测
@@ -431,63 +431,63 @@ void AlgorithmTest::on_pushButton_ContinuFrame_clicked()//多帧检测
         //显示图像
         ui->label_1->ShowOriginalImage(m_pCurrentImgInfo,m_iWidth, m_iHeight);
         Sleep(1000);
-        //设置算法输入参数
-        m_sAlgInParam.vecPbuffer.clear();
-        m_sAlgOutParam.vecDefInfo.clear();
-        m_vecErrorRect.clear();
+//        //设置算法输入参数
+//        m_sAlgInParam.vecPbuffer.clear();
+//        m_sAlgOutParam.vecDefInfo.clear();
+//        m_vecErrorRect.clear();
 
-        m_sAlgInParam.strBatchNo = "0";
-        m_sAlgInParam.strProductNo = "0";
+//        m_sAlgInParam.strBatchNo = "0";
+//        m_sAlgInParam.strProductNo = "0";
 
-        m_sAlgInParam.iPageIndex = i;
-        m_sAlgInParam.iImageHeight = m_iHeight;
-        m_sAlgInParam.iImageWidth = m_iWidth;
-        m_sAlgInParam.iImageChannel = m_iChannel;
-        m_sAlgInParam.dbResolutionH = m_dbResolutionH;
-        m_sAlgInParam.dbResolutionV = m_dbResolutionV;
+//        m_sAlgInParam.iPageIndex = i;
+//        m_sAlgInParam.iImageHeight = m_iHeight;
+//        m_sAlgInParam.iImageWidth = m_iWidth;
+//        m_sAlgInParam.iImageChannel = m_iChannel;
+//        m_sAlgInParam.dbResolutionH = m_dbResolutionH;
+//        m_sAlgInParam.dbResolutionV = m_dbResolutionV;
 
-        m_sAlgInParam.vecPbuffer.push_back(m_pCurrentImgData);
-        m_sAlgInParam.sReferParam.bNeedRefParam = true;
-        m_sAlgInParam.sReferParam.pInputParam = &m_sAlgInParam;
-        m_sAlgInParam.sReferParam.pOutParam = &m_sAlgOutParam;
+//        m_sAlgInParam.vecPbuffer.push_back(m_pCurrentImgData);
+//        m_sAlgInParam.sReferParam.bNeedRefParam = true;
+//        m_sAlgInParam.sReferParam.pInputParam = &m_sAlgInParam;
+//        m_sAlgInParam.sReferParam.pOutParam = &m_sAlgOutParam;
 
 
-        //算法检测
-        if (AlgInspector->GCheck(m_sAlgInParam, m_sAlgOutParam))
-		{
-			m_sAlgOutParam.eResultFlag = RESULT_OK;
-            str1 = tr("画面号(%1):%2 检测成功！").arg(i).arg(str1);
-            ui->textEdit_show->append(str1);
-            if(m_sAlgOutParam.eResultFlag == RESULT_OK)
-            {
-                ui->textEdit_show->append("该图像为良品！");
-                //return ;
-            }
-            else
-            {
-                int size = (int)m_sAlgOutParam.vecDefInfo.size();
-                if(size > 0)
-                {
-                    for(int i = 0; i < size ;i++)
-                    {
-                        AddTableDefectValue(m_sAlgOutParam.vecDefInfo[i]);
-                        ARect Arect = m_sAlgOutParam.vecDefInfo[i].nRect;
-                        QRect rect;
-                        rect.setLeft(Arect.left);
-                        rect.setTop(Arect.top);
-                        rect.setBottom(Arect.bottom);
-                        rect.setRight(Arect.right);
-                        m_vecErrorRect.push_back(rect);
-                    }
-                    ui->label_1->ShowAlgedImage(m_vecErrorRect);
-                    m_vecErrorRect.clear();
-                }
-            }
-        }
-        else
-        {
-            ui->textEdit_show->append("算法检测失败！");
-        }
+//        //算法检测
+//        if (AlgInspector->GCheck(m_sAlgInParam, m_sAlgOutParam))
+//		{
+//			m_sAlgOutParam.eResultFlag = RESULT_OK;
+//            str1 = tr("画面号(%1):%2 检测成功！").arg(i).arg(str1);
+//            ui->textEdit_show->append(str1);
+//            if(m_sAlgOutParam.eResultFlag == RESULT_OK)
+//            {
+//                ui->textEdit_show->append("该图像为良品！");
+//                //return ;
+//            }
+//            else
+//            {
+//                int size = (int)m_sAlgOutParam.vecDefInfo.size();
+//                if(size > 0)
+//                {
+//                    for(int i = 0; i < size ;i++)
+//                    {
+//                        AddTableDefectValue(m_sAlgOutParam.vecDefInfo[i]);
+//                        ARect Arect = m_sAlgOutParam.vecDefInfo[i].nRect;
+//                        QRect rect;
+//                        rect.setLeft(Arect.left);
+//                        rect.setTop(Arect.top);
+//                        rect.setBottom(Arect.bottom);
+//                        rect.setRight(Arect.right);
+//                        m_vecErrorRect.push_back(rect);
+//                    }
+//                    ui->label_1->ShowAlgedImage(m_vecErrorRect);
+//                    m_vecErrorRect.clear();
+//                }
+//            }
+//        }
+//        else
+//        {
+//            ui->textEdit_show->append("算法检测失败！");
+//        }
     }
 }
 
@@ -568,15 +568,15 @@ void AlgorithmTest::on_pushButton_LogPath_clicked()//设置日志路径
 }
 void AlgorithmTest::on_pushButton_Init_clicked()//初始化算法
 {
-    m_sAlgInitParam.iPageIndex = m_iPageIndex;
-    m_sAlgInitParam.iImageHeight = m_iHeight;
-    m_sAlgInitParam.iImageWidth = m_iWidth;
-    m_sAlgInitParam.iImageChannel = m_iChannel;
-    m_sAlgInitParam.dbResolutionH = m_dbResolutionH;
-    m_sAlgInitParam.dbResolutionV = m_dbResolutionV;
-    m_sAlgInitParam.strLogPath = "0";
-    m_sAlgInitParam.strModelPath = "0";
-    m_sAlgInitParam.strParamPath = "0";
+//    m_sAlgInitParam.iPageIndex = m_iPageIndex;
+//    m_sAlgInitParam.iImageHeight = m_iHeight;
+//    m_sAlgInitParam.iImageWidth = m_iWidth;
+//    m_sAlgInitParam.iImageChannel = m_iChannel;
+//    m_sAlgInitParam.dbResolutionH = m_dbResolutionH;
+//    m_sAlgInitParam.dbResolutionV = m_dbResolutionV;
+//    m_sAlgInitParam.strLogPath = "0";
+//    m_sAlgInitParam.strModelPath = "0";
+//    m_sAlgInitParam.strParamPath = "0";
 //    if(AlgInspector->Init(m_sAlgInitParam))
     if(true)
     {
@@ -595,65 +595,65 @@ void AlgorithmTest::on_pushButton_Init_clicked()//初始化算法
 void AlgorithmTest::on_pushButton_Alg_clicked()//算法检测
 {
     //设置算法输入参数
-    m_sAlgInParam.vecPbuffer.clear();
-    m_sAlgOutParam.vecDefInfo.clear();
+//    m_sAlgInParam.vecPbuffer.clear();
+//    m_sAlgOutParam.vecDefInfo.clear();
 
-    m_sAlgInParam.strBatchNo = "0";
-    m_sAlgInParam.strProductNo = "0";
+//    m_sAlgInParam.strBatchNo = "0";
+//    m_sAlgInParam.strProductNo = "0";
 
-    m_sAlgInParam.iPageIndex = m_iPageIndex;
-    m_sAlgInParam.iImageHeight = m_iHeight;
-    m_sAlgInParam.iImageWidth = m_iWidth;
-    m_sAlgInParam.iImageChannel = m_iChannel;
-    m_sAlgInParam.dbResolutionH = m_dbResolutionH;
-    m_sAlgInParam.dbResolutionV = m_dbResolutionV;
+//    m_sAlgInParam.iPageIndex = m_iPageIndex;
+//    m_sAlgInParam.iImageHeight = m_iHeight;
+//    m_sAlgInParam.iImageWidth = m_iWidth;
+//    m_sAlgInParam.iImageChannel = m_iChannel;
+//    m_sAlgInParam.dbResolutionH = m_dbResolutionH;
+//    m_sAlgInParam.dbResolutionV = m_dbResolutionV;
 
-    m_sAlgInParam.vecPbuffer.push_back(m_pCurrentImgData);
-    m_sAlgInParam.sReferParam.bNeedRefParam = true;
-    m_sAlgInParam.sReferParam.pInputParam = &m_sAlgInParam;
-    m_sAlgInParam.sReferParam.pOutParam = &m_sAlgOutParam;
+//    m_sAlgInParam.vecPbuffer.push_back(m_pCurrentImgData);
+//    m_sAlgInParam.sReferParam.bNeedRefParam = true;
+//    m_sAlgInParam.sReferParam.pInputParam = &m_sAlgInParam;
+//    m_sAlgInParam.sReferParam.pOutParam = &m_sAlgOutParam;
 
-    //算法检测
-    if(AlgInspector->GCheck(m_sAlgInParam, m_sAlgOutParam))
-    {
+//    //算法检测
+//    if(AlgInspector->GCheck(m_sAlgInParam, m_sAlgOutParam))
+//    {
 
-        ui->textEdit_show->append("算法检测成功！");
-        if(m_sAlgOutParam.eResultFlag == RESULT_OK)
-        {
-            ui->textEdit_show->append("该图像为良品！");
-            return ;
-        }
-        else
-        {
-            int size = (int)m_sAlgOutParam.vecDefInfo.size();
-            if(size > 0)
-            {
-                for(int i = 0; i < size ;i++)
-                {
-                    AddTableDefectValue(m_sAlgOutParam.vecDefInfo[i]);
-                    ARect Arect = m_sAlgOutParam.vecDefInfo[i].nRect;
-                    QRect rect;
-                    rect.setLeft(Arect.left);
-                    rect.setTop(Arect.top);
-                    rect.setBottom(Arect.bottom);
-                    rect.setRight(Arect.right);
-                    m_vecErrorRect.push_back(rect);
-                }
-                ui->label_1->ShowAlgedImage(m_vecErrorRect);
-                m_vecErrorRect.clear();
-            }
-        }
-    }
-    else
-    {
-        ui->textEdit_show->append("算法检测失败！");
-    }
+//        ui->textEdit_show->append("算法检测成功！");
+//        if(m_sAlgOutParam.eResultFlag == RESULT_OK)
+//        {
+//            ui->textEdit_show->append("该图像为良品！");
+//            return ;
+//        }
+//        else
+//        {
+//            int size = (int)m_sAlgOutParam.vecDefInfo.size();
+//            if(size > 0)
+//            {
+//                for(int i = 0; i < size ;i++)
+//                {
+//                    AddTableDefectValue(m_sAlgOutParam.vecDefInfo[i]);
+//                    ARect Arect = m_sAlgOutParam.vecDefInfo[i].nRect;
+//                    QRect rect;
+//                    rect.setLeft(Arect.left);
+//                    rect.setTop(Arect.top);
+//                    rect.setBottom(Arect.bottom);
+//                    rect.setRight(Arect.right);
+//                    m_vecErrorRect.push_back(rect);
+//                }
+//                ui->label_1->ShowAlgedImage(m_vecErrorRect);
+//                m_vecErrorRect.clear();
+//            }
+//        }
+//    }
+//    else
+//    {
+//        ui->textEdit_show->append("算法检测失败！");
+//    }
 
 }
 
 void AlgorithmTest::on_pushButton_CallAlgDlg_clicked()
 {
-    s_StatusModelDlg s = AlgInspector->CallAlgModelDlg();
+    //s_StatusModelDlg s = AlgInspector->CallAlgModelDlg();
 }
 
 void AlgorithmTest::on_pushButton_OriginalIMG_clicked()//选择 显示原始图片
@@ -749,124 +749,124 @@ bool AlgorithmTest::AddTableFileValue(int index)
     return true;
 }
 
-bool AlgorithmTest::AddTableDefectValue(const s_AlgDefectInfo &s_AlgDefectInfo)
-{
-    int iRowCount = m_pTableDefects->rowCount();
-    m_pTableDefects->setRowCount(iRowCount+1);
+//bool AlgorithmTest::AddTableDefectValue(const s_AlgDefectInfo &s_AlgDefectInfo)
+//{
+//    int iRowCount = m_pTableDefects->rowCount();
+//    m_pTableDefects->setRowCount(iRowCount+1);
 
-    QString str;
-    QColor colorGrade = QColor(255,255,255);
-    switch (s_AlgDefectInfo.iDefectID)
-    {
-        case 0:
-            str = tr("[良品]");
-            break;
-        case 1:
-            str = tr("[划伤]");
-            colorGrade = QColor(255,0,0);
-            break;
-        case 2:
-            str = tr("[灰尘]");
-            colorGrade = QColor(255,0,0);
-            break;
-        case 3:
-            str = tr("[脏污]");
-            colorGrade = QColor(255,0,0);
-            break;
-        case 4:
-            str = tr("[崩边]");
-            colorGrade = QColor(200,0,0);
-            break;
-        case 5:
-            str = tr("[白点]");
-            colorGrade = QColor(200,0,0);
-            break;
-        case 6:
-            str = tr("[异物]");
-            colorGrade = QColor(200,0,0);
-            break;
-        case 7:
-            str = tr("[雨滴]");
-            colorGrade = QColor(200,0,0);
-            break;
-        case 8:
-            str = tr("[缺失]");
-            colorGrade = QColor(200,0,0);
-            break;
-        default:
-           str = tr("[未知]");
-           colorGrade = QColor(100,100,0);
-           break;
-    }
-    QTableWidgetItem *itemClass = new QTableWidgetItem;
-    itemClass = new QTableWidgetItem;
-    itemClass->setText(str);
-    itemClass->setTextAlignment(Qt::AlignHCenter | Qt::AlignVCenter);
-    itemClass->setBackgroundColor(colorGrade);
-    m_pTableDefects->setItem(iRowCount, 0, itemClass);
+//    QString str;
+//    QColor colorGrade = QColor(255,255,255);
+//    switch (s_AlgDefectInfo.iDefectID)
+//    {
+//        case 0:
+//            str = tr("[良品]");
+//            break;
+//        case 1:
+//            str = tr("[划伤]");
+//            colorGrade = QColor(255,0,0);
+//            break;
+//        case 2:
+//            str = tr("[灰尘]");
+//            colorGrade = QColor(255,0,0);
+//            break;
+//        case 3:
+//            str = tr("[脏污]");
+//            colorGrade = QColor(255,0,0);
+//            break;
+//        case 4:
+//            str = tr("[崩边]");
+//            colorGrade = QColor(200,0,0);
+//            break;
+//        case 5:
+//            str = tr("[白点]");
+//            colorGrade = QColor(200,0,0);
+//            break;
+//        case 6:
+//            str = tr("[异物]");
+//            colorGrade = QColor(200,0,0);
+//            break;
+//        case 7:
+//            str = tr("[雨滴]");
+//            colorGrade = QColor(200,0,0);
+//            break;
+//        case 8:
+//            str = tr("[缺失]");
+//            colorGrade = QColor(200,0,0);
+//            break;
+//        default:
+//           str = tr("[未知]");
+//           colorGrade = QColor(100,100,0);
+//           break;
+//    }
+//    QTableWidgetItem *itemClass = new QTableWidgetItem;
+//    itemClass = new QTableWidgetItem;
+//    itemClass->setText(str);
+//    itemClass->setTextAlignment(Qt::AlignHCenter | Qt::AlignVCenter);
+//    itemClass->setBackgroundColor(colorGrade);
+//    m_pTableDefects->setItem(iRowCount, 0, itemClass);
 
-    itemClass = new QTableWidgetItem;
-    str = tr("%1").arg(s_AlgDefectInfo.nId);
-    itemClass->setText(str);
-    itemClass->setTextAlignment(Qt::AlignHCenter | Qt::AlignVCenter);
-    itemClass->setBackgroundColor(colorGrade);
-    m_pTableDefects->setItem(iRowCount, 1, itemClass);
+//    itemClass = new QTableWidgetItem;
+//    str = tr("%1").arg(s_AlgDefectInfo.nId);
+//    itemClass->setText(str);
+//    itemClass->setTextAlignment(Qt::AlignHCenter | Qt::AlignVCenter);
+//    itemClass->setBackgroundColor(colorGrade);
+//    m_pTableDefects->setItem(iRowCount, 1, itemClass);
 
-    itemClass = new QTableWidgetItem;
-    str = tr("%1").arg(s_AlgDefectInfo.fWidth);
-    itemClass->setText(str);
-    itemClass->setTextAlignment(Qt::AlignHCenter | Qt::AlignVCenter);
-    itemClass->setBackgroundColor(colorGrade);
-    m_pTableDefects->setItem(iRowCount, 2, itemClass);
+//    itemClass = new QTableWidgetItem;
+//    str = tr("%1").arg(s_AlgDefectInfo.fWidth);
+//    itemClass->setText(str);
+//    itemClass->setTextAlignment(Qt::AlignHCenter | Qt::AlignVCenter);
+//    itemClass->setBackgroundColor(colorGrade);
+//    m_pTableDefects->setItem(iRowCount, 2, itemClass);
 
-    itemClass = new QTableWidgetItem;
-    str = tr("%1").arg(s_AlgDefectInfo.fLength);
-    itemClass->setText(str);
-    itemClass->setTextAlignment(Qt::AlignHCenter | Qt::AlignVCenter);
-    itemClass->setBackgroundColor(colorGrade);
-    m_pTableDefects->setItem(iRowCount, 3, itemClass);
+//    itemClass = new QTableWidgetItem;
+//    str = tr("%1").arg(s_AlgDefectInfo.fLength);
+//    itemClass->setText(str);
+//    itemClass->setTextAlignment(Qt::AlignHCenter | Qt::AlignVCenter);
+//    itemClass->setBackgroundColor(colorGrade);
+//    m_pTableDefects->setItem(iRowCount, 3, itemClass);
 
-    itemClass = new QTableWidgetItem;
-    str = tr("%1").arg(s_AlgDefectInfo.fArea);
-    itemClass->setText(str);
-    itemClass->setTextAlignment(Qt::AlignHCenter | Qt::AlignVCenter);
-    itemClass->setBackgroundColor(colorGrade);
-    m_pTableDefects->setItem(iRowCount, 4, itemClass);
+//    itemClass = new QTableWidgetItem;
+//    str = tr("%1").arg(s_AlgDefectInfo.fArea);
+//    itemClass->setText(str);
+//    itemClass->setTextAlignment(Qt::AlignHCenter | Qt::AlignVCenter);
+//    itemClass->setBackgroundColor(colorGrade);
+//    m_pTableDefects->setItem(iRowCount, 4, itemClass);
 
-    itemClass = new QTableWidgetItem;
-    str = tr("%1").arg(s_AlgDefectInfo.fConstract);
-    itemClass->setText(str);
-    itemClass->setTextAlignment(Qt::AlignHCenter | Qt::AlignVCenter);
-    itemClass->setBackgroundColor(colorGrade);
-    m_pTableDefects->setItem(iRowCount, 5, itemClass);
+//    itemClass = new QTableWidgetItem;
+//    str = tr("%1").arg(s_AlgDefectInfo.fConstract);
+//    itemClass->setText(str);
+//    itemClass->setTextAlignment(Qt::AlignHCenter | Qt::AlignVCenter);
+//    itemClass->setBackgroundColor(colorGrade);
+//    m_pTableDefects->setItem(iRowCount, 5, itemClass);
 
-    itemClass = new QTableWidgetItem;
-    str = tr("%1").arg(s_AlgDefectInfo.fCirRat);
-    itemClass->setText(str);
-    itemClass->setTextAlignment(Qt::AlignHCenter | Qt::AlignVCenter);
-    itemClass->setBackgroundColor(colorGrade);
-    m_pTableDefects->setItem(iRowCount, 6, itemClass);
+//    itemClass = new QTableWidgetItem;
+//    str = tr("%1").arg(s_AlgDefectInfo.fCirRat);
+//    itemClass->setText(str);
+//    itemClass->setTextAlignment(Qt::AlignHCenter | Qt::AlignVCenter);
+//    itemClass->setBackgroundColor(colorGrade);
+//    m_pTableDefects->setItem(iRowCount, 6, itemClass);
 
-    itemClass = new QTableWidgetItem;
-    str = tr("%1").arg(s_AlgDefectInfo.fRectRat);
-    itemClass->setText(str);
-    itemClass->setTextAlignment(Qt::AlignHCenter | Qt::AlignVCenter);
-    itemClass->setBackgroundColor(colorGrade);
-    m_pTableDefects->setItem(iRowCount, 7, itemClass);
+//    itemClass = new QTableWidgetItem;
+//    str = tr("%1").arg(s_AlgDefectInfo.fRectRat);
+//    itemClass->setText(str);
+//    itemClass->setTextAlignment(Qt::AlignHCenter | Qt::AlignVCenter);
+//    itemClass->setBackgroundColor(colorGrade);
+//    m_pTableDefects->setItem(iRowCount, 7, itemClass);
 
-    itemClass = new QTableWidgetItem;
-    str = tr("%1").arg(s_AlgDefectInfo.fJnd);
-    itemClass->setText(str);
-    itemClass->setTextAlignment(Qt::AlignHCenter | Qt::AlignVCenter);
-    itemClass->setBackgroundColor(colorGrade);
-    m_pTableDefects->setItem(iRowCount, 8, itemClass);
+//    itemClass = new QTableWidgetItem;
+//    str = tr("%1").arg(s_AlgDefectInfo.fJnd);
+//    itemClass->setText(str);
+//    itemClass->setTextAlignment(Qt::AlignHCenter | Qt::AlignVCenter);
+//    itemClass->setBackgroundColor(colorGrade);
+//    m_pTableDefects->setItem(iRowCount, 8, itemClass);
 
-    itemClass = new QTableWidgetItem;
-    str = tr("%1").arg(s_AlgDefectInfo.fEnergy);
-    itemClass->setText(str);
-    itemClass->setTextAlignment(Qt::AlignHCenter | Qt::AlignVCenter);
-    itemClass->setBackgroundColor(colorGrade);
-    m_pTableDefects->setItem(iRowCount, 9, itemClass);
+//    itemClass = new QTableWidgetItem;
+//    str = tr("%1").arg(s_AlgDefectInfo.fEnergy);
+//    itemClass->setText(str);
+//    itemClass->setTextAlignment(Qt::AlignHCenter | Qt::AlignVCenter);
+//    itemClass->setBackgroundColor(colorGrade);
+//    m_pTableDefects->setItem(iRowCount, 9, itemClass);
 
-    return true;
-}
+//    return true;
+//}
