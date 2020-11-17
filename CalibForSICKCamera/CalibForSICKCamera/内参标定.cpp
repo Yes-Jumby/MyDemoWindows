@@ -44,7 +44,9 @@ void getFilesName(string &File_Directory, string &FileType, vector<string>&Files
 
 void m_calibration(vector<string> &FilesName, string result,Size board_size, Size square_size, Mat &cameraMatrix, Mat &distCoeffs, vector<Mat> &rvecsMat, vector<Mat> &tvecsMat)
 {
-	ofstream fout(result);                       // 保存标定结果的文件 
+	//ofstream fout(result);                       // 保存标定结果的文件 
+
+    FileStorage fswrite(result, FileStorage::WRITE);
 
 	cout << "开始提取角点………………" << endl;
 	int image_count = 0;           // 图像数量 
@@ -87,6 +89,18 @@ void m_calibration(vector<string> &FilesName, string result,Size board_size, Siz
 			//find4QuadCornerSubpix(view_gray, image_points, Size(5, 5)); //对粗提取的角点进行精确化
 			cv::cornerSubPix(view_gray, image_points, cv::Size(11, 11), cv::Size(-1, -1), cv::TermCriteria(CV_TERMCRIT_ITER + CV_TERMCRIT_EPS, 20, 0.01));
 
+
+            //vector<Point2f> image_points_;
+            //for (int i = 0; i < image_points.size(); i++)
+            //{
+            //    
+            //    image_points_.push_back(image_points.at(i));
+            //    drawChessboardCorners(view_gray, board_size, image_points_, true);
+
+            //    imshow("Camera Calibration", view_gray);//显示图片
+            //    waitKey(10);//暂停0.1S    
+            //}
+
 			image_points_seq.push_back(image_points);  //保存亚像素角点
 
 													   /* 在图像上显示角点位置 */
@@ -122,14 +136,12 @@ void m_calibration(vector<string> &FilesName, string result,Size board_size, Siz
     cout << "object_points！！！" << endl;
 	/* 运行标定函数 */
 	double err_first = calibrateCamera(object_points_seq, image_points_seq, image_size, cameraMatrix, distCoeffs, rvecsMat, tvecsMat, CV_CALIB_FIX_K3);
-	fout << "重投影误差1：" << err_first << "像素" << endl << endl;
+    fswrite << "err_first" << err_first;
 	cout << "标定完成！！！" << endl;
 
     cout << "开始保存定标结果………………" << endl;
-    fout << "相机内参数矩阵：" << endl;
-    fout << cameraMatrix << endl << endl;
-    fout << "畸变系数：\n";
-    fout << distCoeffs << endl << endl << endl;
+    fswrite << "cameraMatrix"<<cameraMatrix;
+    fswrite << "distCoeffs"<<distCoeffs;
 	//输出标定结果    
     cout << "重投影误差1：" << err_first << "像素" << endl << endl;
     cout << "相机内参数矩阵：" << endl;
@@ -156,31 +168,33 @@ void m_calibration(vector<string> &FilesName, string result,Size board_size, Siz
         totalPoints += object_points_seq[i].size();
 
         err /= object_points_seq[i].size();
-        fout << "第" << i + 1 << "幅图像的平均误差：" << err << "像素" << endl;
+       /* fout << "第" << i + 1 << "幅图像的平均误差：" << err << "像素" << endl;*/
         cout << "第" << i + 1 << "幅图像的平均误差：" << err << "像素" << endl;
         total_err += err;
     }
-    fout << "重投影误差2：" << sqrt(totalErr / totalPoints) << "像素" << endl << endl;
-    fout << "重投影误差3：" << total_err / image_count << "像素" << endl << endl;
+    //fout << "重投影误差2：" << sqrt(totalErr / totalPoints) << "像素" << endl << endl;
+    //fout << "重投影误差3：" << total_err / image_count << "像素" << endl << endl;
     cout << "重投影误差2：" << sqrt(totalErr / totalPoints) << "像素" << endl << endl;
     cout << "重投影误差3：" << total_err / image_count << "像素" << endl << endl;
 
-    //Mat rotation_matrix = Mat(3, 3, CV_32FC1, Scalar::all(0)); /* 保存每幅图像的旋转矩阵 */
-	//for (int i = 0; i < image_count; i++)
-	//{
-	//	fout << "第" << i + 1 << "幅图像的旋转向量：" << endl;
-	//	fout << rvecsMat[i] << endl;
+    Mat rotation_matrix = Mat(3, 3, CV_32FC1, Scalar::all(0)); /* 保存每幅图像的旋转矩阵 */
+	for (int i = 0; i < image_count; i++)
+	{
+        cout << "第" << i + 1 << "幅图像的旋转向量：" << endl;
+        cout << rvecsMat[i]*180/3.1415926 << endl;
+        cout << "第" << i + 1 << "幅图像的平移向量：" << endl;
+        cout << tvecsMat[i] << endl << endl;
 
-	//	/* 将旋转向量转换为相对应的旋转矩阵 */
-	//	Rodrigues(rvecsMat[i], rotation_matrix);
-	//	fout << "第" << i + 1 << "幅图像的旋转矩阵：" << endl;
-	//	fout << rotation_matrix << endl;
-	//	fout << "第" << i + 1 << "幅图像的平移向量：" << endl;
-	//	fout << tvecsMat[i] << endl << endl;
-	//}
+		/* 将旋转向量转换为相对应的旋转矩阵 */
+		Rodrigues(rvecsMat[i], rotation_matrix);
+        cout << "第" << i + 1 << "幅图像的旋转矩阵：" << endl;
+        cout << rotation_matrix << endl;
+        
+	}
 	cout << "定标结果完成保存！！！" << endl;
-	fout << endl;
-    fout.close();
+	//fout << endl;
+ //   fout.close();
+    fswrite.release();
 }
 
 void m_undistort(vector<string> &FilesName, Size image_size, Mat &cameraMatrix, Mat &distCoeffs)
@@ -218,9 +232,9 @@ void m_undistort(vector<string> &FilesName, Size image_size, Mat &cameraMatrix, 
 	std::cout << "保存结束" << endl;
 }
 
-void mainbiaoding()
+void main111111()
 {
-	string File_Directory1 = "C:\\imagesave\\PNG1\\7";   //文件夹目录1
+	string File_Directory1 = "C:\\imagesave\\201109\\2";   //文件夹目录1
 
 	string FileType = ".png";    // 需要查找的文件类型
 
@@ -229,15 +243,15 @@ void mainbiaoding()
 	getFilesName(File_Directory1, FileType, FilesName1);   // 标定所用图像文件的路径
 
 
-	Size board_size = Size(11, 8);                         // 标定板上每行、列的角点数 
-	Size square_size = Size(5, 5);                       // 实际测量得到的标定板上每个棋盘格的物理尺寸，单位mm
+	Size board_size = Size(11, 8);                 //        // 标定板上每行、列的角点数 
+	Size square_size = Size(5, 5);          //65 65             // 实际测量得到的标定板上每个棋盘格的物理尺寸，单位mm
 
 	Mat cameraMatrix = Mat(3, 3, CV_32FC1, Scalar::all(0));        // 摄像机内参数矩阵
 	Mat distCoeffs = Mat(1, 5, CV_32FC1, Scalar::all(0));          // 摄像机的5个畸变系数：k1,k2,p1,p2,k3
 	vector<Mat> rvecsMat;                                          // 存放所有图像的旋转向量，每一副图像的旋转向量为一个mat
 	vector<Mat> tvecsMat;                                          // 存放所有图像的平移向量，每一副图像的平移向量为一个mat
 
-	m_calibration(FilesName1, "caliberation_result_7.txt",board_size, square_size, cameraMatrix, distCoeffs, rvecsMat, tvecsMat);
+	m_calibration(FilesName1, "caliberation_result_201110.xml",board_size, square_size, cameraMatrix, distCoeffs, rvecsMat, tvecsMat);
 
 	//m_undistort(FilesName1, image_size, cameraMatrix, distCoeffs);
 

@@ -2,41 +2,42 @@
 #include <QFile>
 int main()
 {
-    //time stamp
-    QVector<long long> timestamp;
-    QFile file("C:/imagesave/times3.dat");
-    if (file.open(QIODevice::ReadOnly | QIODevice::Text))
-    {
-        QString line;
-        QTextStream in(&file);  //用文件构造流
-        while((line = in.readLine()).size()>0)//字符串有内容
-        {
-            timestamp.push_back(line.toLongLong());
-        }
-    }
-    else
-    {
-        qDebug()<<"open file failed!";
-    }
-    file.close();
+//    //time stamp
+//    QVector<long long> timestamp;
+//    QFile file("C:/imagesave/times3.dat");
+//    if (file.open(QIODevice::ReadOnly | QIODevice::Text))
+//    {
+//        QString line;
+//        QTextStream in(&file);  //用文件构造流
+//        while((line = in.readLine()).size()>0)//字符串有内容
+//        {
+//            timestamp.push_back(line.toLongLong());
+//        }
+//    }
+//    else
+//    {
+//        qDebug()<<"open file failed!";
+//    }
+//    file.close();
 
-    qDebug()<<"timestamp count"<<timestamp.size();
-//    return 1;
+//    qDebug()<<"timestamp count"<<timestamp.size();
+////    return 1;
     //data files
-    int start = 3428;
-    int end = 4043;
+    int start = 462;
+    int end = 1083;
     int image_count = end -start+1;
     qDebug()<<"image count"<<image_count;
 
 
-    //judge if return
-    if(image_count>timestamp.size()) {
-        qDebug()<<"there is too much imgs!!!plz check again";
-        return 1;
-    }
-    std::string datpath = "C://imagesave//4HZ/13//";
+//    //judge if return
+//    if(image_count>timestamp.size()) {
+//        qDebug()<<"there is too much imgs!!!plz check again";
+//        return 1;
+//    }
+    std::string datpath = "C://imagesave//201116//dat//3//";
     std::string inpath;
-    std::string outpath = "C://imagesave//PNG1//13//";
+    std::string outpath = "C://imagesave//201116//png//3//";
+    long long id = 114042895000000;
     //buffer
     uchar *pBuffer = new uchar[2560*832];
     //image class
@@ -47,7 +48,9 @@ int main()
         {
             inpath = datpath+std::to_string(i)+".dat";
             qDebug()<<QString::fromStdString(inpath);
-            qDebug()<<m_ImageSaveAndRead.readToImage_IMU(inpath,outpath,timestamp.at(i-start),pBuffer);
+            //qDebug()<<m_ImageSaveAndRead.readToImage_IMU(inpath,outpath,timestamp.at(i-start),pBuffer);
+            qDebug()<<m_ImageSaveAndRead.readToImage_IMU(inpath,outpath,id,pBuffer);
+            id = id + 250000000;
         }
 
     }

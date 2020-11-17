@@ -1,4 +1,5 @@
 #include "readAndWriteDat.h"
+#include <opencv.hpp>
 bool CReadAndWriteDat::writeToCloudfast(const std::string &path,int size_)
 {
     float pCloud[4] = { 1.111111,2.123456,3.1,4 };
@@ -126,60 +127,57 @@ bool CReadAndWriteDat::readbinToCloud(const std::string & path)
 
 }
 
-bool CReadAndWriteDat::readbinToCloud1(const std::string & path)
+bool CReadAndWriteDat::readbinToImage(const std::string & path)
 {
     std::string infilePath = path;
     int pos = infilePath.find(".");
-    std::string outfilePath = infilePath.substr(0, pos) + ".txt";
+    std::string rangefilePath = infilePath.substr(0, pos) + ".tif";
+    std::string intensityfilePath = infilePath.substr(0, pos) + ".bmp";
 
+    int cols = 2560;
     Cloud3D cloud;
-
-    std::ifstream mDataInput(path, std::ifstream::binary);
-    if (!mDataInput.is_open())
-    {
-        std::cout << "read bin failed" << std::endl;
-        return false;
-    }
-
-    //// get length of file:
-    //mDataInput.seekg(0, mDataInput.end);
-    //int length = mDataInput.tellg();
-    cloud.cloud_size = 2560 * 500;
-    cloud.cols = 2560;
-    cloud.rows = 500;
-    cloud.minx = 80;
-    cloud.dx = 0.05;
-    cloud.dy = 0.05;
-    mDataInput.seekg(0, mDataInput.beg);
+    std::cout << "sizeof(Cloud3D):" << sizeof(Cloud3D) << std::endl;
+    std::ifstream mDataInput(infilePath, std::ifstream::binary);
     
-    float *pRange = new float[cloud.cloud_size];
-    mDataInput.read((char*)pRange, cloud.cloud_size * sizeof(float));
-    mDataInput.close();
-
-
-    std::ofstream outfile;
-    outfile.open(outfilePath, std::ios::ate);
-    if (!outfile)
+    if (mDataInput.is_open())
     {
-        return false;
+        // get length of file:
+        int length = mDataInput.tellg();
+        mDataInput.seekg(0, mDataInput.beg);
+        mDataInput.read((char*)&cloud, sizeof(Cloud3D));
+
+        int rows = length / (sizeof(unsigned short) + sizeof(unsigned char)) / cols;
+
+        std::cout << "length:" << length << std::endl;
+        std::cout << "rows:" << rows << std::endl;
+        std::cout << "cloud.rows:" << cloud.rows << std::endl;
+        std::cout << "cols:" << cols << std::endl;
+        std::cout << "unsigned short:" << sizeof(unsigned short) << std::endl;
+        std::cout << "sizeof(Cloud3D):" << sizeof(Cloud3D) << std::endl;
+        int mySize = rows*cols;
+        unsigned short *pRange = new unsigned short[mySize];
+        unsigned char *pIntensity = new unsigned char[mySize];
+        std::cout << "Reading " << length << " characters... " << std::endl;
+        // read data as a block:
+
+        
+        mDataInput.seekg(sizeof(Cloud3D), mDataInput.beg);
+        mDataInput.read((char*)pRange, sizeof(unsigned short)*mySize);
+
+        mDataInput.seekg(sizeof(unsigned short)*mySize+ sizeof(Cloud3D), mDataInput.beg);
+        mDataInput.read((char*)pIntensity, sizeof(unsigned char)*mySize);
+
+        mDataInput.close();
+
+        cv::Mat range = cv::Mat(rows, cols, CV_16UC1, pRange);
+        cv::Mat intensity = cv::Mat(rows, cols, CV_8UC1, pRange);
+        cv::imwrite(rangefilePath, range);
+        cv::imwrite(intensityfilePath, intensity);
+
+        delete[]pRange;
+        delete[]pIntensity;
+
     }
-    outfile.setf(std::ios::fixed, std::ios::floatfield);
-    outfile.precision(3);
-    int idx = 0;
-    float x, y, z, gray;
-    for (int i = 0; i < cloud.rows; i++)
-    {
-        for (int j = 0; j < cloud.cols; j++)
-        {
-            idx = j + i*cloud.cols;
-            x = j*cloud.dx + cloud.minx;
-            y = i*cloud.dy;
-            z = pRange[idx];
-            gray = 255.0;
-            outfile << x << " " << y << " " << z << " " << gray << "\n";
-        }
-    }
-    delete[]pRange;
     return true;
 
 }
@@ -394,4 +392,67 @@ bool CReadAndWriteDat::transformToCloudLinux(const std::string & inpath)//withou
 
 	}
 	return true;
+}
+
+bool CReadAndWriteDat::ReadBinToTIF(const std::string & inpath)
+{
+    //std::string infilePath = "D:\\Stereo3D\\cali\\Tutorial1-GettingStarted\\Images\\img-0.dat";
+    std::string infilePath = inpath;
+    int pos = infilePath.find(".");
+    std::string rangefilePath = infilePath.substr(0, pos) + "-range.tif";
+    std::string intensityfilePath = infilePath.substr(0, pos) + "-itensity.bmp";
+
+    int cols = 2560;
+
+
+    std::ifstream mDataInput(infilePath, std::ifstream::binary);
+    if (!mDataInput.is_open())
+    {
+        std::cout << "read bin failed" << std::endl;
+        return false;
+    }
+    if (mDataInput.is_open())
+    {
+        // get length of file:
+        mDataInput.seekg(0, mDataInput.end);
+        int length = mDataInput.tellg();
+        mDataInput.seekg(0, mDataInput.beg);
+
+        int rows = length / (sizeof(unsigned short) + sizeof(unsigned char)) / cols;
+
+        std::cout << "length:" << length << std::endl;
+        std::cout << "rows:" << rows << std::endl;
+        std::cout << "cols:" << cols << std::endl;
+        std::cout << "unsigned short:" << sizeof(unsigned short) << std::endl;
+        std::cout << "unsigned short:" << sizeof(unsigned short) << std::endl;
+        //char * buffer = new char[length];
+        rows = 1;
+        int mySize = rows*cols;
+        unsigned short *pRange = new unsigned short[mySize];
+        unsigned char *pIntensity = new unsigned char[mySize];
+        int *ptime = new int[1];
+        std::cout << "Reading " << length << " characters... " << std::endl;
+        // read data as a block:
+        mDataInput.read((char*)pRange, sizeof(unsigned short)*mySize);
+        mDataInput.seekg(sizeof(unsigned short)*mySize, mDataInput.beg);
+        mDataInput.read((char*)pIntensity, sizeof(unsigned char)*mySize);
+        mDataInput.seekg(sizeof(unsigned char)*mySize+ sizeof(unsigned short)*mySize, mDataInput.beg);
+        mDataInput.read((char*)ptime, sizeof(int)*1);
+        mDataInput.close();
+
+        for (int i = 0; i < rows; i++)
+        {
+            std::cout << "Reading " << ptime [i]<< std::endl;
+        }
+
+        cv::Mat range = cv::Mat(rows, cols, CV_16UC1, pRange);
+        cv::Mat intensity = cv::Mat(rows, cols, CV_8UC1, pRange);
+        cv::imwrite(rangefilePath, range);
+        cv::imwrite(intensityfilePath, intensity);
+
+        delete[]pRange;
+        delete[]pIntensity;
+
+    }
+    return true;
 }

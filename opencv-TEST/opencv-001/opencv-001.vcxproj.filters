@@ -54,9 +54,6 @@
     <ClCompile Include="图像校正.cpp">
       <Filter>源文件\before</Filter>
     </ClCompile>
-    <ClCompile Include="源.cpp">
-      <Filter>源文件\before</Filter>
-    </ClCompile>
     <ClCompile Include="ifstream.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
@@ -86,6 +83,15 @@
     </ClCompile>
     <ClCompile Include="数值解.cpp">
       <Filter>源文件\before</Filter>
+    </ClCompile>
+    <ClCompile Include="201102.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="单应矩阵.cpp">
+      <Filter>源文件\before</Filter>
+    </ClCompile>
+    <ClCompile Include="RangeValueConverting.cpp">
+      <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

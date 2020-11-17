@@ -9,7 +9,7 @@ struct userdata {
 	vector<Point2f> points;
 };
 
-
+const int cornerpoint_size = 5;
 void mouseHandler(int event, int x, int y, int flags, void* data_ptr)
 {
 	if (event == EVENT_LBUTTONDOWN)
@@ -17,7 +17,7 @@ void mouseHandler(int event, int x, int y, int flags, void* data_ptr)
 		userdata *data = ((userdata *)data_ptr);
 		circle(data->im, Point(x, y), 3, Scalar(0, 255, 255), 5, CV_AA);
 		imshow("Image", data->im);
-		if (data->points.size() < 4)
+		if (data->points.size() < cornerpoint_size)
 		{
 			data->points.push_back(Point2f(x, y));
 		}
@@ -46,14 +46,20 @@ void mouseHandler(int event, int x, int y, int flags, void* data_ptr)
 //		CopyBiTree(T->rchild, TT->rchild);
 //	}
 
-int main00220(int argc, char** argv)
+int main(int argc, char** argv)
 {
-
+    Mat im_1 = imread("D:\\下载\\extra\\range-1.tiff",-1);//替换的照片
+    Mat im_2 = imread("D:\\下载\\extra\\range-2.tiff",-1);//替换的照片
+    cv::Mat senIm3;
+    cv::Mat senIm(2560, 832, CV_8UC1);
+    std::vector<cv::Mat> vSenImg(3, senIm);
+    cv::merge(vSenImg, senIm3);
 	int* b = nullptr;
-	int* c = *&b;
+	int* c = *&b; 
+
 	// Read in the image.
 	//Mat im_src = imread("first-image.jpg");
-	Mat im_src = imread("992A6369.jpg");//替换的照片
+	Mat im_src = imread("E:\\test_PIC\\model.jpg");//替换的照片
 	Size size = im_src.size();
 
 	// Create a vector of points.
@@ -62,12 +68,13 @@ int main00220(int argc, char** argv)
 	pts_src.push_back(Point2f(size.width - 1, 0));
 	pts_src.push_back(Point2f(size.width - 1, size.height - 1));
 	pts_src.push_back(Point2f(0, size.height - 1));
+    pts_src.push_back(Point2f(size.width/2 - 1, size.height/2 - 1));
 
 
 
 	// Destination image
 	//Mat im_dst = imread("times-square.jpg");
-	Mat im_dst = imread("1.jpg");
+	Mat im_dst = imread("E:\\test_PIC\\origin.png");
 
 
 	// Set data for mouse handler
