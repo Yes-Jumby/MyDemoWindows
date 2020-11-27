@@ -93,6 +93,12 @@
     <ClCompile Include="RangeValueConverting.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="dat_to_cloud.cpp">
+      <Filter>源文件\2006</Filter>
+    </ClCompile>
+    <ClCompile Include="AUTOX.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="copy.bat">

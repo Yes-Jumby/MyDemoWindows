@@ -5,6 +5,7 @@
 #include <QDebug>
 #include <string>
 #include <fstream>
+#include <iostream>
 class CImageSaveAndRead
 {
 public:
@@ -15,6 +16,8 @@ public:
     //camera calib
     bool SaveToImage(std::string path,void*pBuffer,int width=2560,int height=832);
     bool readToImage(const std::string &path,const std::string &outpath,uchar *pBuffer,int size_ = 2560*832);
+    //dat to cloud
+    bool readbinToCloud(const std::string &path);
 private:
     long long m_id;
 };

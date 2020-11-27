@@ -52,6 +52,7 @@ void LaserLine::ProcessSrcImg()
     LabelDisplayMat(ui.label_SrcImg, m_mSrcImg);//展示原图
     cv::Mat Grayimg;
     cvtColor(m_mSrcImg, Grayimg, CV_BGR2GRAY);//原图像转化为灰度图
+    //blur(Grayimg, m_mSmoothImg, Size(3, 3), Point(-1, -1));
     GaussianBlur(Grayimg, m_mSmoothImg, cv::Size(9, 9), 0, 0);//平滑去噪——高斯滤波
     ProcessThreshold();
 }
@@ -103,11 +104,68 @@ void LaserLine::OnReIdentifi()
 
 void LaserLine::ProcessIdentifi()
 {
-    cv::Mat DstImg(m_mThresholdImg.rows, m_mThresholdImg.cols, CV_8UC1, cv::Scalar(0));
-    for (int i = 0; i < DstImg.cols; i++)
+
+    cv::Mat stats, centroids, sensor_color;
+    sensor_color = cv::Mat::zeros(m_mThresholdImg.size(), CV_8UC3);
+    cv::Mat labels;
+    int n_comps = cv::connectedComponentsWithStats(
+        m_mThresholdImg, //二值图像
+        labels,     //和原图一样大的标记图
+        stats, //nccomps×5的矩阵 表示每个连通区域的外接矩形和面积（pixel）
+        centroids //nccomps×2的矩阵 表示每个连通区域的质心
+    );
+    ui.textEdit->append(QString("src regions:%1").arg(n_comps));
+    //初始化颜色表
+    vector<cv::Vec3b> colors(n_comps);
+    colors[0] = cv::Vec3b(0, 0, 0); // background pixels remain black
+    for (int i = 1; i < n_comps; i++) {
+        colors[i] = cv::Vec3b(rand() % 256, rand() % 256, rand() % 256);
+    }
+    for (int y = 0; y < sensor_color.rows; y++)
+        for (int x = 0; x < sensor_color.cols; x++)
+        {
+            int label = labels.at<int>(y, x);
+            CV_Assert(0 <= label && label <= n_comps);
+            sensor_color.at<cv::Vec3b>(y, x) = colors[label];
+        }
+    LabelDisplayMat(ui.label_SrcImg, sensor_color);
+    cv::imwrite("D:\\Stereo3D\\data\\DemoIMG\\sensor_color.bmp", sensor_color);
+
+    vector<int> region_size(n_comps);
+    for (int i = 0; i < n_comps; i++) {
+        region_size.push_back(stats.at<int>(i, cv::CC_STAT_AREA));
+        ui.textEdit->append(QString("src regions size:%1").arg(stats.at<int>(i, cv::CC_STAT_AREA)));
+    }
+    sort(region_size.begin(), region_size.end(), greater<int>());
+    int size_threod = region_size.at(1)*0.8;
+    cout << size_threod << endl;
+    for (int i = 1; i < n_comps; i++) {
+        colors[i] = cv::Vec3b(rand() % 256, rand() % 256, rand() % 256);
+        if (stats.at<int>(i, cv::CC_STAT_AREA) < size_threod)
+            colors[i] = cv::Vec3b(0, 0, 0); // small regions are painted with black too.
+    }
+
+    //按照label值，对不同的连通域进行着色
+    for (int y = 0; y < sensor_color.rows; y++)
+        for (int x = 0; x < sensor_color.cols; x++)
+        {
+            int label = labels.at<int>(y, x);
+            CV_Assert(0 <= label && label <= n_comps);
+            sensor_color.at<cv::Vec3b>(y, x) = colors[label];
+        }
+
+    LabelDisplayMat(ui.label_GrayImg, sensor_color);
+    cv::imwrite("D:\\Stereo3D\\data\\DemoIMG\\sensor_color_reduced.bmp", sensor_color);
+    //统计降噪后的连通区域
+    cv::cvtColor(sensor_color, m_mThresholdImg, cv::COLOR_BGR2GRAY);
+    cv::threshold(m_mThresholdImg, m_mThresholdImg, 0, 255, cv::THRESH_BINARY);
+
+
+    cv::Mat linePre(m_mThresholdImg.rows, m_mThresholdImg.cols, CV_8UC1, cv::Scalar(0));
+    for (int i = 0; i < linePre.cols; i++)
     {
         long long syp = 0, sp = 0, ypos;
-        for (int j = 0; j < DstImg.rows; j++)
+        for (int j = 0; j < linePre.rows; j++)
         {
             syp += (j*(long long)(m_mThresholdImg.at<uchar>(j, i)));
             sp += (long long)(m_mThresholdImg.at<uchar>(j, i));
@@ -115,7 +173,7 @@ void LaserLine::ProcessIdentifi()
         if (sp)
         {
             ypos = syp / sp;//ypos即为每一lie的中心坐标
-            DstImg.at<uchar>(ypos, i) = 255;//将中心图标在DstImg上用白点标识出来
+            linePre.at<uchar>(ypos, i) = 255;//将中心图标在DstImg上用白点标识出来
         }
     }
 //    for (int i = 0; i < DstImg.rows; i++)
@@ -132,6 +190,8 @@ void LaserLine::ProcessIdentifi()
 //            DstImg.at<uchar>(i, xpos) = 255;//将中心图标在DstImg上用白点标识出来
 //        }
 //    }
-    imwrite("ProcessIdentifi.bmp", DstImg);
-    LabelDisplayMat(ui.label_DstImg, DstImg);
+
+
+    cv::imwrite("D:\\Stereo3D\\data\\DemoIMG\\ProcessIdentifi.bmp", linePre);
+    LabelDisplayMat(ui.label_DstImg, linePre);
 }

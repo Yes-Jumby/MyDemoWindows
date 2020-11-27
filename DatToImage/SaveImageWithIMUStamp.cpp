@@ -1,6 +1,6 @@
 #include "ImageSaveAndRead.h"
 #include <QFile>
-int main()
+int main2()
 {
 //    //time stamp
 //    QVector<long long> timestamp;

@@ -46,7 +46,7 @@ void mouseHandler(int event, int x, int y, int flags, void* data_ptr)
 //		CopyBiTree(T->rchild, TT->rchild);
 //	}
 
-int main(int argc, char** argv)
+int maindyjz(int argc, char** argv)
 {
     Mat im_1 = imread("D:\\下载\\extra\\range-1.tiff",-1);//替换的照片
     Mat im_2 = imread("D:\\下载\\extra\\range-2.tiff",-1);//替换的照片

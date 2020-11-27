@@ -145,10 +145,13 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="fanTuiSick.cpp" />
     <ClCompile Include="RangeValueConverting.cpp" />
     <ClCompile Include="RangeValueConverting_New.cpp" />
     <ClCompile Include="内参标定.cpp" />
+    <ClCompile Include="去除小连通域.cpp" />
     <ClCompile Include="角点.cpp" />
+    <ClCompile Include="拟合直线.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

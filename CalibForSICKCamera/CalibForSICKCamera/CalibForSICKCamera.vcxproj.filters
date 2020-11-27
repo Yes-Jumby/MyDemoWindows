@@ -30,5 +30,14 @@
     <ClCompile Include="RangeValueConverting_New.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="拟合直线.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="去除小连通域.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="fanTuiSick.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

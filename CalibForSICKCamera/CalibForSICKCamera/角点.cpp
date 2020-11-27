@@ -149,6 +149,9 @@ void m_calibration_cloud_camera(vector<string> &FilesName, string result, Size b
 
 
     solvePnP(pts_3d, pts_2d, cameraMatrix, distCoeffs, r, tvecsMat,false,cv::SOLVEPNP_EPNP);
+	
+	
+	//ba todo
     cv::Rodrigues(r, rvecsMat); // r 为旋转向量形式，用 Rodrigues 公式转换为矩阵
     cout << "r" << endl << r*180.0 / 3.1415926 << endl;
     cout << "rvecsMat" << endl << rvecsMat << endl;
@@ -166,7 +169,7 @@ void main()
     //3D
     // ------ Convert
     SickCam::ImgT iconRange;
-    iconRange.loadFromIconFile("E:\\experimental_Data\\data_20201111\\BOARD_without_mirror\\3D\\calibed_3D", 1.0);
+    iconRange.loadFromIconFile("E:\\experimental_Data\\CLOUD_CAMERA\\data_20201111\\BOARD_without_mirror\\3D\\calibed_3D", 1.0);
     cv::Mat rangeCALIm(iconRange.get_rows(), iconRange.get_cols(), CV_32FC1, iconRange.getData(SickCam::DataNames::RAN_CAL));
     cv::Mat rangeCALIm_FLIP;
     cv::flip(rangeCALIm, rangeCALIm_FLIP, 0);
@@ -184,11 +187,15 @@ void main()
     cv::threshold(rangeCALIm_FLIP_8, rangeCALIm_FLIP_8_bin,151,255, THRESH_BINARY);
 
     SickCam::ImgT iconSensor;
-    iconSensor.loadFromIconFile("E:\\experimental_Data\\data_20201111\\BOARD_without_mirror\\2D\\1", 1.0);
+    iconSensor.loadFromIconFile("E:\\experimental_Data\\CLOUD_CAMERA\\data_20201111\\BOARD_without_mirror\\2D\\1", 1.0);
     cv::Mat rangeSEN(iconSensor.get_rows(), iconSensor.get_cols(), CV_8UC1, iconSensor.getData(SickCam::DataNames::SEN));
-    cv::imwrite("E:\\experimental_Data\\data_20201111\\BOARD_without_mirror\\sensor_back.bmp", rangeSEN);
+    cv::imwrite("E:\\experimental_Data\\CLOUD_CAMERA\\data_20201111\\BOARD_without_mirror\\sensor_back.bmp", rangeSEN);
+
+    cv::Mat dst;
+    cv::blur(rangeSEN, dst, Size(3, 3), Point(-1, -1));
+    cv::copyMakeBorder(rangeSEN, dst,2,2,2,2, BORDER_DEFAULT);
     //2D
-    string File_Directory1 = "E:\\experimental_Data\\data_20201111\\BOARD_without_mirror";   //文件夹目录1
+    string File_Directory1 = "E:\\experimental_Data\\CLOUD_CAMERA\\data_20201111\\BOARD_without_mirror";   //文件夹目录1
 
     string FileType = ".bmp";    // 需要查找的文件类型
 

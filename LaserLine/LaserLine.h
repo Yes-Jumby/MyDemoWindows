@@ -7,7 +7,8 @@
 #include <QLineEdit>
 #include <QPushButton>
 #include <QtWidgets>
-
+using namespace cv;
+using namespace std;
 class LaserLine : public QMainWindow
 {
     Q_OBJECT

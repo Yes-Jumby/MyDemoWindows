@@ -81,6 +81,8 @@ bool CReadAndWriteDat::readbinToCloud(const std::string & path)
 	//int length = mDataInput.tellg();
 	mDataInput.seekg(0, mDataInput.beg);
 	mDataInput.read((char*)&cloud, sizeof(Cloud3D));
+    cloud.cloud_size = 2560;
+    cloud.rows = 1;
 
     std::cerr <<cloud.cloud_size<< std::endl;
 	float *pRange = new float[cloud.cloud_size];

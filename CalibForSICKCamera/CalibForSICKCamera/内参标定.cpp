@@ -164,7 +164,7 @@ void m_calibration(vector<string> &FilesName, string result,Size board_size, Siz
 
         err = norm(Mat(image_points_seq[i]), Mat(image_points_pro), NORM_L2);
 
-        totalErr += err*err;
+        totalErr += err*err;//SSE
         totalPoints += object_points_seq[i].size();
 
         err /= object_points_seq[i].size();
@@ -174,7 +174,7 @@ void m_calibration(vector<string> &FilesName, string result,Size board_size, Siz
     }
     //fout << "重投影误差2：" << sqrt(totalErr / totalPoints) << "像素" << endl << endl;
     //fout << "重投影误差3：" << total_err / image_count << "像素" << endl << endl;
-    cout << "重投影误差2：" << sqrt(totalErr / totalPoints) << "像素" << endl << endl;
+    cout << "重投影误差2：" << sqrt(totalErr / totalPoints) << "像素" << endl << endl;//RSSE
     cout << "重投影误差3：" << total_err / image_count << "像素" << endl << endl;
 
     Mat rotation_matrix = Mat(3, 3, CV_32FC1, Scalar::all(0)); /* 保存每幅图像的旋转矩阵 */

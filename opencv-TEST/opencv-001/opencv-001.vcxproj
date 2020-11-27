@@ -151,7 +151,7 @@
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalDependencies>liblas_c.lib;liblas.lib;opencv_calib3d320.lib;opencv_core320.lib;opencv_cudaarithm320.lib;opencv_cudabgsegm320.lib;opencv_cudacodec320.lib;opencv_cudafeatures2d320.lib;opencv_cudafilters320.lib;opencv_cudaimgproc320.lib;opencv_cudalegacy320.lib;opencv_cudaobjdetect320.lib;opencv_cudaoptflow320.lib;opencv_cudastereo320.lib;opencv_cudawarping320.lib;opencv_cudev320.lib;opencv_features2d320.lib;opencv_flann320.lib;opencv_highgui320.lib;opencv_imgcodecs320.lib;opencv_imgproc320.lib;opencv_ml320.lib;opencv_objdetect320.lib;opencv_photo320.lib;opencv_shape320.lib;opencv_stitching320.lib;opencv_superres320.lib;opencv_video320.lib;opencv_videoio320.lib;opencv_videostab320.lib;opencv_viz320.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>C:\OSGeo4W\lib;C:\extern_libs\opencv\opencv_3_2\x64\vc14\lib;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.2\lib\x64</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>C:\OSGeo4W\lib;C:\extern_libs\opencv\opencv_3_2\x64\vc14\lib;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.2\lib\x64;C:\extern_libs\ranger3\lib</AdditionalLibraryDirectories>
     </Link>
     <PostBuildEvent>
       <Command>$(ProjectDir)copy.bat</Command>
@@ -164,7 +164,9 @@
     <ClCompile Include="200426.cpp" />
     <ClCompile Include="200907.cpp" />
     <ClCompile Include="201102.cpp" />
+    <ClCompile Include="AUTOX.cpp" />
     <ClCompile Include="condition.cpp" />
+    <ClCompile Include="dat_to_cloud.cpp" />
     <ClCompile Include="dynamicprogramming.cpp" />
     <ClCompile Include="ifstream.cpp" />
     <ClCompile Include="main.cpp" />
