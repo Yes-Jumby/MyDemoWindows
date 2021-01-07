@@ -27,12 +27,6 @@
     <ClCompile Include="200421.cpp">
       <Filter>源文件\before</Filter>
     </ClCompile>
-    <ClCompile Include="200422.cpp">
-      <Filter>源文件\before</Filter>
-    </ClCompile>
-    <ClCompile Include="200423.cpp">
-      <Filter>源文件\before</Filter>
-    </ClCompile>
     <ClCompile Include="200426.cpp">
       <Filter>源文件\before</Filter>
     </ClCompile>
@@ -97,6 +91,27 @@
       <Filter>源文件\2006</Filter>
     </ClCompile>
     <ClCompile Include="AUTOX.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="矩阵旋转90度.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="输出根节点到叶子节点.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="全排列.cpp">
+      <Filter>源文件\before</Filter>
+    </ClCompile>
+    <ClCompile Include="多数组组合.cpp">
+      <Filter>源文件\before</Filter>
+    </ClCompile>
+    <ClCompile Include="回溯法.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="quicksort.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="源.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>

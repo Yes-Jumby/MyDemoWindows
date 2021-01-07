@@ -175,7 +175,7 @@ void m_calibration(vector<string> &FilesName, string result,Size board_size, Siz
     //fout << "重投影误差2：" << sqrt(totalErr / totalPoints) << "像素" << endl << endl;
     //fout << "重投影误差3：" << total_err / image_count << "像素" << endl << endl;
     cout << "重投影误差2：" << sqrt(totalErr / totalPoints) << "像素" << endl << endl;//RSSE
-    cout << "重投影误差3：" << total_err / image_count << "像素" << endl << endl;
+    cout << "重投影误差3：" << total_err / image_count << "像素" << endl << endl;//
 
     Mat rotation_matrix = Mat(3, 3, CV_32FC1, Scalar::all(0)); /* 保存每幅图像的旋转矩阵 */
 	for (int i = 0; i < image_count; i++)
@@ -232,9 +232,9 @@ void m_undistort(vector<string> &FilesName, Size image_size, Mat &cameraMatrix, 
 	std::cout << "保存结束" << endl;
 }
 
-void main111111()
+void main内参标定()
 {
-	string File_Directory1 = "C:\\imagesave\\201109\\2";   //文件夹目录1
+	string File_Directory1 = "E:\\experimental_Data\\CAMERA_INSTRICT\\201109\\2";   //文件夹目录1
 
 	string FileType = ".png";    // 需要查找的文件类型
 
@@ -256,4 +256,16 @@ void main111111()
 	//m_undistort(FilesName1, image_size, cameraMatrix, distCoeffs);
 
 	return;
+    //#define N 2012;
+    //int iRows = N;
+    //int iCols = N;
+    //Mat oldMat = Mat(iRows, iCols, CV_32FC1, Scalar::all(0));
+    //Mat newMat = Mat(iRows, iCols, CV_32FC1, Scalar::all(0));
+    //for (int i = 1; i <= iRows; i++)
+    //{
+    //    for (int i = 1; i <= iCols; i++)
+    //    {
+    //        newMat[j][N - i + 1] = oldMat[i][j];
+    //    }
+    //}
 }

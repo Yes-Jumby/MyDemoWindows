@@ -6,6 +6,9 @@
 #include <string>
 #include <fstream>
 #include <iostream>
+#include <io.h>
+#include <QtFileOperate/QtFileOperate.h>
+using namespace std;
 class CImageSaveAndRead
 {
 public:
@@ -18,8 +21,16 @@ public:
     bool readToImage(const std::string &path,const std::string &outpath,uchar *pBuffer,int size_ = 2560*832);
     //dat to cloud
     bool readbinToCloud(const std::string &path);
+    //dat to cloud new
+    bool readbinToCloudNew(const std::string &path,const std::string &outpath,const std::string &dirname);
+    //dat to cloud new
+    bool readdatToCloud(const QString &path);
+    void getFilesName(string &File_Directory, string &FileType, vector<string>&FilesName);
 private:
     long long m_id;
+    float m_RMat[10];
+    float m_TMat[4];
+    CQtFileOperate m_FileOperate;
 };
 
 #endif // IMAGESAVEANDREAD_H

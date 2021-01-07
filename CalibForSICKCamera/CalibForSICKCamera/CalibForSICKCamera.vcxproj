@@ -96,10 +96,10 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
-      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
-      <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_DEBUG;_CONSOLE;_CRT_NONSTDC_NO_DEPRECATE;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
     </ClCompile>
     <Link>
@@ -128,7 +128,7 @@
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
-      <Optimization>MaxSpeed</Optimization>
+      <Optimization>Disabled</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;_CRT_NONSTDC_NO_DEPRECATE;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
@@ -146,12 +146,20 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="fanTuiSick.cpp" />
+    <ClCompile Include="find3D.cpp" />
+    <ClCompile Include="InterfaceForSICK.cpp" />
+    <ClCompile Include="find2D.cpp" />
     <ClCompile Include="RangeValueConverting.cpp" />
     <ClCompile Include="RangeValueConverting_New.cpp" />
+    <ClCompile Include="readWriteIMG.cpp" />
     <ClCompile Include="内参标定.cpp" />
     <ClCompile Include="去除小连通域.cpp" />
-    <ClCompile Include="角点.cpp" />
+    <ClCompile Include="直线拟合OPENCV.cpp" />
+    <ClCompile Include="Cloud_Camera_Sum.cpp" />
     <ClCompile Include="拟合直线.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="InterfaceForSICK.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

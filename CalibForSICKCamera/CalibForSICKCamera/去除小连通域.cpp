@@ -33,7 +33,8 @@ int main11221(int argc, char** argv) {
     sort(region_size.begin(), region_size.end(), greater<int>());
     int size_threod = region_size.at(1)*0.8;
     cout << size_threod << endl;
-    for (int i = 1; i < n_comps; i++) {
+    for (int i = 1; i < n_comps; i++) 
+    {
         colors[i] = cv::Vec3b(rand() % 256, rand() % 256, rand() % 256);
         cout << "ÂÖÀª´óÐ¡£º" << stats.at<int>(i, cv::CC_STAT_AREA) << endl;
         if (stats.at<int>(i, cv::CC_STAT_AREA) < size_threod)

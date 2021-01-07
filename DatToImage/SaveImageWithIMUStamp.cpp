@@ -23,8 +23,8 @@ int main2()
 //    qDebug()<<"timestamp count"<<timestamp.size();
 ////    return 1;
     //data files
-    int start = 462;
-    int end = 1083;
+    int start = 1852;
+    int end = 2414;
     int image_count = end -start+1;
     qDebug()<<"image count"<<image_count;
 
@@ -34,10 +34,10 @@ int main2()
 //        qDebug()<<"there is too much imgs!!!plz check again";
 //        return 1;
 //    }
-    std::string datpath = "C://imagesave//201116//dat//3//";
+    std::string datpath = "C://imagesave//201223//dat//3//";
     std::string inpath;
-    std::string outpath = "C://imagesave//201116//png//3//";
-    long long id = 114042895000000;
+    std::string outpath = "C://imagesave//201223//png//3//";
+    long long id = 2898178000000;
     //buffer
     uchar *pBuffer = new uchar[2560*832];
     //image class

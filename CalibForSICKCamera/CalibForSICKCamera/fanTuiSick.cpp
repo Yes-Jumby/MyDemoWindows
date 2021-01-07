@@ -5,7 +5,7 @@
 //find line
 using namespace cv;
 using namespace std;
-int mainsick(int argc, char** argv) {
+int mainfantui(int argc, char** argv) {
 
     vector<Point3f> pts_3d_world;
     vector<Point2f> pts_2d_pixel;
@@ -24,6 +24,17 @@ int mainsick(int argc, char** argv) {
             pts_2d_world.push_back(cv::Point2f(i * 30, 30));
         }
     }
+    //3D
+    std::string fileName1 = "D:\\Stereo3D\\data\\DemoIMG\\interSec3D.txt";
+    std::ofstream fileOutput(fileName1.c_str());   // 打开文件，建立数据流
+    cv::Point3f p3D;
+    for (int i = 0; i < 12; i++)
+    {
+        p3D = pts_3d_world.at(i);
+        fileOutput << p3D.x << "   " << p3D.y << "   " << p3D.z << std::endl;
+    }
+    fileOutput.close(); //关闭数据流
+
     //2D
     std::string fileName = "D:\\Stereo3D\\data\\DemoIMG\\interSec.txt";
     std::ifstream fileInput(fileName.c_str());   // 打开文件，建立数据流
@@ -52,8 +63,8 @@ int mainsick(int argc, char** argv) {
     image_points_seq.push_back(pts_2d_pixel);
     object_points_seq.push_back(pts_3d_world);
     //double err_first = calibrateCamera(object_points_seq, image_points_seq, cv::Size(2560, 832), cameraMatrix, distCoeffs, rvecsMat, tvecsMat, CV_CALIB_FIX_K1|CV_CALIB_RATIONAL_MODEL| CV_CALIB_ZERO_TANGENT_DIST);
-    solvePnP(pts_3d_world, pts_2d_pixel, cameraMatrix, distCoeffs, r, tvecsMat, false, cv::SOLVEPNP_UPNP);
-    cameraMatrix = initCameraMatrix2D(object_points_seq, image_points_seq, cv::Size(2560, 832));
+    //solvePnP(pts_3d_world, pts_2d_pixel, cameraMatrix, distCoeffs, r, tvecsMat, false, cv::SOLVEPNP_UPNP);
+    //cameraMatrix = initCameraMatrix2D(object_points_seq, image_points_seq, cv::Size(2560, 832));
     Mat H = findHomography(pts_2d_world, pts_2d_pixel, 0);
     cout << H << endl << endl;;
     vector<Point2f> pts_2d_dest;

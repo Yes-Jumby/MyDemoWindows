@@ -1,0 +1,168 @@
+<icon_data_format valuetype="IMAGE" name="IMAGE">
+  <parameter name="size">2129920</parameter>
+  <parameter name="version">1</parameter>
+  <parameter name="layout">SCAN</parameter>
+  <component valuetype="image" name="Ranger3Image">
+    <parameter name="size">2560</parameter>
+    <parameter name="height">832</parameter>
+    <imagetraits>
+      <parameter name="size x">2560</parameter>
+      <parameter name="size y">832</parameter>
+      <parameter name="offset x">0</parameter>
+      <parameter name="offset y">0</parameter>
+    </imagetraits>
+    <subcomponent valuetype="BYTE" name="Image">
+      <parameter name="size">2560</parameter>
+      <parameter name="width">2560</parameter>
+    </subcomponent>
+  </component>
+  <system_data>
+    <!-- *** Information gathered at acquisition start *** -->
+    <aquisition_start_time>2020-11-11T15:55:01.133</aquisition_start_time>
+    <gui_version>2.0.6.2297</gui_version>
+    <TLModelName>SICKGigEVisionTL</TLModelName>
+    <TLVersion>2.1.8.2.665</TLVersion>
+    <GevTLSubsystemInfo>filter driver: 2010802/0</GevTLSubsystemInfo>
+    <DeviceFirmwareVersion>FW:2.0.6.2297,FPGA:2.0.2320 (RELEASE 20190315T14:18Z+01 rev: 8728bea6e)</DeviceFirmwareVersion>
+    <DeviceVersion>1.0</DeviceVersion>
+    <DeviceModelName>Ranger3-60N GigE</DeviceModelName>
+    <DeviceManufacturerInfo>Type:V3DR3-60NE21111S01 Part:1083672</DeviceManufacturerInfo>
+    <DeviceSerialNumber>18290004</DeviceSerialNumber>
+    <DeviceCurrentBootPath>Primary</DeviceCurrentBootPath>
+    <DeviceNextBootPath>Secondary</DeviceNextBootPath>
+    <GevSCPSPacketSize>4144</GevSCPSPacketSize>
+    <GevStreamActiveEngine>SocketDriver</GevStreamActiveEngine>
+    <parameters format="Ranger3ParameterCSV">
+      #Version,1
+      #Root
+      #DeviceControl
+      DeviceScanType,Areascan
+      DeviceLinkThroughputLimit,118750000
+      DeviceLinkHeartbeatTimeout,3000
+      #ImageFormatControl
+      ExposureTime_RegionSelector_Region0,100
+      ExposureTime_RegionSelector_Region1,100
+      Width_RegionSelector_Region1,2560
+      Height_RegionSelector_Region1,832
+      Height_RegionSelector_Scan3dExtraction1,90
+      OffsetX_RegionSelector_Region1,0
+      OffsetY_RegionSelector_Region1,0
+      ComponentEnable_ComponentSelector_Reflectance_RegionSelector_Scan3dExtraction1,1
+      PixelFormat_ComponentSelector_Range_RegionSelector_Scan3dExtraction1,Coord3D_C16
+      TestPattern_ComponentSelector_Intensity_RegionSelector_Region0,Off
+      TestPattern_ComponentSelector_Range_RegionSelector_Scan3dExtraction1,Off
+      #Scan3dControl
+      Scan3dExtractionMethod_Scan3dExtractionSelector_Scan3dExtraction1,Hi3D
+      WamSize_Scan3dExtractionSelector_Scan3dExtraction1,Normal
+      SearchMode3D_Scan3dExtractionSelector_Scan3dExtraction1,GlobalMax
+      RangeAxis_Scan3dExtractionSelector_Scan3dExtraction1,Standard
+      DetectionThreshold_Scan3dExtractionSelector_Scan3dExtraction1,25
+      SearchDirection_Scan3dExtractionSelector_Scan3dExtraction1,Standard
+      ReflectanceFilter_Scan3dExtractionSelector_Scan3dExtraction1,1
+      #AcquisitionControl
+      AcquisitionMode,Continuous
+      AcquisitionFrameRate,20
+      AcquisitionLineRate,1000
+      TriggerMode_TriggerSelector_LineStart,On
+      TriggerMode_TriggerSelector_FrameStart,Off
+      TriggerSource_TriggerSelector_LineStart,Encoder
+      TriggerSource_TriggerSelector_FrameStart,FrameTriggerInput
+      TriggerSource_TriggerSelector_ExposureStart,LineStart
+      TriggerActivation_TriggerSelector_FrameStart,RisingEdge
+      TriggerDelay_TriggerSelector_ExposureStart,0
+      MultiSlopeMode,Off
+      MultiSlopeKneePointCount,1
+      #DigitalIOControl
+      #TimerControl
+      #EncoderControl
+      EncoderMode,FourPhase
+      EncoderDivider,410
+      EncoderOutputMode,DirectionUp
+      EncoderResetSource,Off
+      #EventControl
+      EventNotification_EventSelector_LogMessage,On
+      #LogMessageData
+      #EventTestData
+      #FileAccessControl
+      #ChunkDataControl
+      ChunkModeActive,0
+      #TestControl
+      #TransportLayerControl
+      #GigEVision
+      GevSCPD,0
+      #Capabilities
+      #FirmwareUpdate
+      #FrameBufferStatus
+      #DescramblerStatus
+      #PostProcessingStatus
+      #ImagerInterfaceStatus
+      #M30Debug
+      #M30RegisterPeekPoke
+      #DataDumper
+      #LogEventTest
+      #DataTypesTest
+      #ValidationTest
+      #AvailableTest
+    </parameters>
+    <!-- *** Information gathered at time of acquisition frame grab *** -->
+    <frame_grab_time>2020-11-11T15:56:13.532</frame_grab_time>
+    <!-- *** Information gathered at time of file save *** -->
+    <frame_save_time>2020-11-11T15:56:34.878</frame_save_time>
+    <DeviceTemperature_DeviceTemperatureSelector_Sensor>42.0</DeviceTemperature_DeviceTemperatureSelector_Sensor>
+    <DeviceTemperature_DeviceTemperatureSelector_SensorBoard>39.0</DeviceTemperature_DeviceTemperatureSelector_SensorBoard>
+    <DeviceTemperature_DeviceTemperatureSelector_MainBoard>41.75</DeviceTemperature_DeviceTemperatureSelector_MainBoard>
+    <DeviceTemperature_DeviceTemperatureSelector_ZpmSoc>48.601104736328125</DeviceTemperature_DeviceTemperatureSelector_ZpmSoc>
+    <DeviceTemperature_DeviceTemperatureSelector_Zpm1>46.28125</DeviceTemperature_DeviceTemperatureSelector_Zpm1>
+    <DeviceTemperature_DeviceTemperatureSelector_Zpm2>41.0</DeviceTemperature_DeviceTemperatureSelector_Zpm2>
+    <DeviceTemperature_DeviceTemperatureSelector_Zpm3>43.375</DeviceTemperature_DeviceTemperatureSelector_Zpm3>
+    <DeviceTemperature_DeviceTemperatureSelector_Zpm4>43.375</DeviceTemperature_DeviceTemperatureSelector_Zpm4>
+    <DeviceTemperature_DeviceTemperatureSelector_Filter>37.75</DeviceTemperature_DeviceTemperatureSelector_Filter>
+    <GevStreamSeenPacketCount>975618</GevStreamSeenPacketCount>
+    <GevStreamLostPacketCount>0</GevStreamLostPacketCount>
+    <GevStreamDeliveredPacketCount>975618</GevStreamDeliveredPacketCount>
+    <GevStreamUnavailablePacketCount>0</GevStreamUnavailablePacketCount>
+    <GevStreamDuplicatePacketCount>0</GevStreamDuplicatePacketCount>
+    <GevStreamResendCommandCount>492</GevStreamResendCommandCount>
+    <GevStreamResendPacketCount>2553</GevStreamResendPacketCount>
+    <GevStreamSkippedBlockCount>0</GevStreamSkippedBlockCount>
+    <GevStreamEngineUnderrunCount>0</GevStreamEngineUnderrunCount>
+    <GevStreamDiscardedBlockCount>0</GevStreamDiscardedBlockCount>
+    <GevStreamIncompleteBlockCount>0</GevStreamIncompleteBlockCount>
+    <GevStreamOversizedBlockCount>0</GevStreamOversizedBlockCount>
+    <log type="gui" minLevel="SEVERE" truncatedLines="0">
+      2020-11-11 15:08:21.471 SEVERE  An error occured during the execution of 'Save buffer to file'.
+                                      See details for more information.
+      2020-11-11 15:08:31.337 SEVERE  An error occured during the execution of 'Save buffer to file'.
+                                      See details for more information.
+    </log>
+    <log type="gui" minLevel="WARNING" truncatedLines="0">
+      2020-11-11 15:08:21.471 SEVERE  An error occured during the execution of 'Save buffer to file'.
+                                      See details for more information.
+      2020-11-11 15:08:31.337 SEVERE  An error occured during the execution of 'Save buffer to file'.
+                                      See details for more information.
+    </log>
+    <log type="device" minLevel="SEVERE" truncatedLines="0"></log>
+    <log type="device" minLevel="WARNING" truncatedLines="105622">
+      2020-11-11 15:56:34.086(3251629424840)  WARNING A- encoder input voltage fault!
+      2020-11-11 15:56:34.094(3251637739984)  WARNING A+ encoder input voltage fault!
+      2020-11-11 15:56:34.107(3251645986312)  WARNING B- encoder input voltage fault!
+      2020-11-11 15:56:34.111(3251654314864)  WARNING B+ encoder input voltage fault!
+      2020-11-11 15:56:34.222(3251765691696)  WARNING Interrupt from encoder receiver (fault register value 0xd890).
+      2020-11-11 15:56:34.230(3251774188048)  WARNING A- encoder input voltage fault!
+      2020-11-11 15:56:34.253(3251784839168)  WARNING Interrupt from encoder receiver (fault register value 0x90).
+      2020-11-11 15:56:34.253(3251792749384)  WARNING A+ encoder input voltage fault!
+      2020-11-11 15:56:34.257(3251801113872)  WARNING B- encoder input voltage fault!
+      2020-11-11 15:56:34.284(3251809553440)  WARNING B+ encoder input voltage fault!
+      2020-11-11 15:56:34.353(3251896072968)  WARNING Interrupt from encoder receiver (fault register value 0x90).
+      2020-11-11 15:56:34.365(3251907086744)  WARNING Interrupt from encoder receiver (fault register value 0x90).
+      2020-11-11 15:56:34.484(3252018263168)  WARNING Interrupt from encoder receiver (fault register value 0x90).
+      2020-11-11 15:56:34.506(3252029052792)  WARNING Interrupt from encoder receiver (fault register value 0x9090).
+      2020-11-11 15:56:34.517(3252037392152)  WARNING A- encoder input voltage fault!
+      2020-11-11 15:56:34.518(3252045732984)  WARNING B- encoder input voltage fault!
+      2020-11-11 15:56:34.617(3252156866768)  WARNING Interrupt from encoder receiver (fault register value 0x90).
+      2020-11-11 15:56:34.638(3252167977360)  WARNING Interrupt from encoder receiver (fault register value 0x90).
+      2020-11-11 15:56:34.735(3252279094944)  WARNING Interrupt from encoder receiver (fault register value 0x90).
+      2020-11-11 15:56:34.746(3252290103128)  WARNING Interrupt from encoder receiver (fault register value 0x90).
+    </log>
+  </system_data>
+</icon_data_format>

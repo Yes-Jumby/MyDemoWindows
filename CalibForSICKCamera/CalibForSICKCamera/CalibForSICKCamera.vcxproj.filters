@@ -1,43 +1,64 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="源文件">
-      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
-      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
-    </Filter>
-    <Filter Include="头文件">
-      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
-      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
-    </Filter>
     <Filter Include="资源文件">
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Cloud_Camera_Calib">
+      <UniqueIdentifier>{b24fe2fa-84cf-4bdc-bc1f-bc55b8f4b119}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="相机内参标定">
+      <UniqueIdentifier>{82c72b78-f32f-4b7f-b489-96b4f6faa98b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Test">
+      <UniqueIdentifier>{dd682371-9970-4d38-a24c-03515ad114e2}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="内参标定.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="角点.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="RangeValueConverting.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="RangeValueConverting_New.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
     <ClCompile Include="拟合直线.cpp">
-      <Filter>源文件</Filter>
+      <Filter>Test</Filter>
     </ClCompile>
     <ClCompile Include="去除小连通域.cpp">
-      <Filter>源文件</Filter>
+      <Filter>Test</Filter>
     </ClCompile>
     <ClCompile Include="fanTuiSick.cpp">
-      <Filter>源文件</Filter>
+      <Filter>Test</Filter>
     </ClCompile>
+    <ClCompile Include="RangeValueConverting.cpp">
+      <Filter>Test</Filter>
+    </ClCompile>
+    <ClCompile Include="RangeValueConverting_New.cpp">
+      <Filter>Test</Filter>
+    </ClCompile>
+    <ClCompile Include="find3D.cpp">
+      <Filter>Cloud_Camera_Calib</Filter>
+    </ClCompile>
+    <ClCompile Include="find2D.cpp">
+      <Filter>Cloud_Camera_Calib</Filter>
+    </ClCompile>
+    <ClCompile Include="InterfaceForSICK.cpp">
+      <Filter>Cloud_Camera_Calib</Filter>
+    </ClCompile>
+    <ClCompile Include="Cloud_Camera_Sum.cpp">
+      <Filter>Cloud_Camera_Calib</Filter>
+    </ClCompile>
+    <ClCompile Include="内参标定.cpp">
+      <Filter>相机内参标定</Filter>
+    </ClCompile>
+    <ClCompile Include="readWriteIMG.cpp">
+      <Filter>Cloud_Camera_Calib</Filter>
+    </ClCompile>
+    <ClCompile Include="直线拟合OPENCV.cpp">
+      <Filter>Test</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="InterfaceForSICK.h">
+      <Filter>Cloud_Camera_Calib</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
