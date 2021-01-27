@@ -159,6 +159,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="200421.cpp" />
+    <ClCompile Include="myFFT.cpp" />
     <ClCompile Include="quicksort.cpp" />
     <ClCompile Include="全排列.cpp" />
     <ClCompile Include="回溯法.cpp" />

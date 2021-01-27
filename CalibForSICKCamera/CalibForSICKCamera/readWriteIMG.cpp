@@ -8,6 +8,10 @@
 #include <Ranger3.h>
 using namespace cv;
 using namespace std;
+/*
+@param in ranger3 ICON 图像文件
+@param out 读取ranger3图片，转换成opencv mat，主要是测试
+*/
 void main读取保存图片()
 {
     //3D

@@ -435,6 +435,7 @@ void findCorners2D(const cv::Mat &Range3D_FLIP_8_Mat_, int gray_threod_, int siz
     vector<cv::Point2f> point_insect_3_;
     FindFourPoints(min_Edge_c3_, 3, labels, rect_edge_, pts_2d_, 0.25, IsShow);
     imwrite("E:\\experimental_Data\\CLOUD_CAMERA\\data_20201111\\BOARD_without_mirror\\min_Edge_c3_.bmp", min_Edge_c3_);
+
     ////minAreaRect
     //cv::Mat min_AreaRect_c3_;
     //min_AreaRect_c3_ = convertTo3Channels(min_region_);
@@ -478,9 +479,24 @@ void findCorners2D(const cv::Mat &Range3D_FLIP_8_Mat_, int gray_threod_, int siz
     ////tilt rectangle
     //DrawRectIn3Channels(min_AreaRect_c3_, pts_minAreaRect_3_);
 
+    //pts_2d_.push_back(pts_minAreaRect_1_.at(3)); 
+    //pts_2d_.push_back(pts_minAreaRect_1_.at(0)); 
+    //pts_2d_.push_back(pts_minAreaRect_1_.at(1)); 
+    //pts_2d_.push_back(pts_minAreaRect_1_.at(2));
+
+    //pts_2d_.push_back(pts_minAreaRect_2_.at(3));
+    //pts_2d_.push_back(pts_minAreaRect_2_.at(0));
+    //pts_2d_.push_back(pts_minAreaRect_2_.at(1));
+    //pts_2d_.push_back(pts_minAreaRect_2_.at(2));
+    //                                  
+    //pts_2d_.push_back(pts_minAreaRect_3_.at(3));
+    //pts_2d_.push_back(pts_minAreaRect_3_.at(0));
+    //pts_2d_.push_back(pts_minAreaRect_3_.at(1));
+    //pts_2d_.push_back(pts_minAreaRect_3_.at(2));
     ////Rect rect_ = RotatedRect_.boundingRect2f();
     ////rectangle(min_AreaRect_c3_, rect_, Scalar(0, 0, 255), 1, LINE_8);
     //imwrite("E:\\experimental_Data\\CLOUD_CAMERA\\data_20201111\\BOARD_without_mirror\\min_AreaRect_c3_.bmp", min_AreaRect_c3_);
+
     ////up - right rectangle
     //cv::Mat min_region_c3_;
     //min_region_c3_ = convertTo3Channels(min_region_);
@@ -494,9 +510,9 @@ void findCorners2D(const cv::Mat &Range3D_FLIP_8_Mat_, int gray_threod_, int siz
     //    rectangle(min_region_c3_, rect, color, 1, cv::LINE_8);
     //    putText(min_region_c3_, to_string(i), cv::Point(rect.x + rect.width, rect.y + rect.height),
     //        CV_FONT_HERSHEY_PLAIN, 0.8, color, 1, cv::LINE_8);
-    //    pts_2d_.push_back(cv::Point2f(rect.x, rect.y + rect.height));//左下-右下-右上-左上
-    //    pts_2d_.push_back(cv::Point2f(rect.x + rect.width, rect.y + rect.height));
     //    pts_2d_.push_back(cv::Point2f(rect.x + rect.width, rect.y));
+    //    pts_2d_.push_back(cv::Point2f(rect.x + rect.width, rect.y + rect.height));
+    //    pts_2d_.push_back(cv::Point2f(rect.x, rect.y + rect.height));//左下-右下-右上-左上
     //    pts_2d_.push_back(cv::Point2f(rect.x, rect.y));
     //}
     //imwrite("E:\\experimental_Data\\CLOUD_CAMERA\\data_20201111\\BOARD_without_mirror\\findCorners2D.bmp", min_region_c3_);

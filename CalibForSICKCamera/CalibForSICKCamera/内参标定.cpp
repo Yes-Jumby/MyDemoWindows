@@ -41,7 +41,9 @@ void getFilesName(string &File_Directory, string &FileType, vector<string>&Files
 		_findclose(hFile);
 	}
 }
-
+/*
+@输入标定板图像和标定板参数，获取相机内参、镜头畸变
+*/
 void m_calibration(vector<string> &FilesName, string result,Size board_size, Size square_size, Mat &cameraMatrix, Mat &distCoeffs, vector<Mat> &rvecsMat, vector<Mat> &tvecsMat)
 {
 	//ofstream fout(result);                       // 保存标定结果的文件 
@@ -232,6 +234,11 @@ void m_undistort(vector<string> &FilesName, Size image_size, Mat &cameraMatrix, 
 	std::cout << "保存结束" << endl;
 }
 
+
+/*
+@param in 2D照片大于10张
+@param out 标定参数，相机内参，镜头畸变等
+*/
 void main内参标定()
 {
 	string File_Directory1 = "E:\\experimental_Data\\CAMERA_INSTRICT\\201109\\2";   //文件夹目录1

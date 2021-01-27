@@ -36,7 +36,7 @@ void getFilesName111(string &File_Directory, string &FileType, vector<string>&Fi
     }
 }
 
-
+//dat to cloud new********use in transfer dat saved by ARM to txt
 int main()
 {
 //    std::string infilePath = "E://experimental_Data//SICK//201230//Data//dat//1_ori//";

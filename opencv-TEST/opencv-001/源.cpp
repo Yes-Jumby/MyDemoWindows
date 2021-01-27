@@ -250,7 +250,7 @@ bool postorder_iteration(TreeNode *root)
 {
     if (root == nullptr)
     {
-        return;
+        return true;
     }
 
     stack<TreeNode*> elements_;

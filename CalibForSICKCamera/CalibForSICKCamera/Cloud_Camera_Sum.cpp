@@ -3,8 +3,84 @@
 using namespace cv;
 using namespace std;
 
+#include <iostream>
+#include <opencv2/core/core.hpp>
+#include <ceres/ceres.h>
+#include "ceres/rotation.h"
+#include <chrono>
+#include<Eigen/Core>
+#include<Eigen/Dense>
+#include<fstream>
+#include<math.h>
+using namespace std;
+double sumVector(vector<double> x)
+{
+    double sum = 0.0;
+    for (int i = 0; i<x.size(); ++i)
+    {
+        sum += x[i];
+    }
+    return sum / x.size();
+}
+// 代价函数的计算模型
+struct Resection
+{
+    Resection(double X, double Y, double Z, double x, double y,
+        double fx, double fy, double cx, double cy,
+        double *lensDistort) :_X(X), _Y(Y), _Z(Z), observed_x_(x), observed_y_(y)
+        , fx_(fx), fy_(fy), cx_(cx), cy_(cy), lensDistort_(lensDistort) {
+        //P_W_[0] = _X;
+        //P_W_[1] = _Y;
+        //P_W_[2] = _Z;
+    }
+    // 残差的计算
+    template <typename T>
+    bool operator() (const T* const camPose, T* residual) const     // 残差
+    {
+        T AngleAxis[3] = { camPose[0],camPose[1],camPose[2] };
+        const T P_W_[3] = {(T)_X,(T)_Y,(T)_Z};
+        T P_C_[3];
+        ceres::AngleAxisRotatePoint(AngleAxis, P_W_, P_C_);
+        P_C_[0] = P_C_[0] + camPose[3];
+        P_C_[1] = P_C_[1] + camPose[4];
+        P_C_[2] = P_C_[2] + camPose[5];
 
+        // Compute the center of distortion. The sign change comes from
+        // the camera model that Noah Snavely's Bundler assumes, whereby
+        // the camera coordinate system has a negative z axis.
 
+        T xp = P_C_[0] / P_C_[2];
+        T yp = P_C_[1] / P_C_[2];
+
+        // Apply second and fourth order radial distortion.
+        T l1 = T(lensDistort_[0]);
+        T l2 = T(lensDistort_[1]);
+        T r2 = xp*xp + yp*yp;
+        T distortion = 1.0 + r2  * (l1 + l2  * r2);
+
+        // Compute final projected point position.
+        T xp_undistort_ = distortion * xp;
+        T yp_undistort_ = distortion * yp;
+
+        T predicted_x = fx_ * xp_undistort_ + cx_;
+        T predicted_y = fy_ * yp_undistort_ + cy_;
+
+        // The error is the difference between the predicted and observed position.
+        residual[0] = predicted_x - T(observed_x_);
+        residual[1] = predicted_y - T(observed_y_);
+
+        return true; //千万不要写成return 0,要写成return true
+    }
+private:
+    const double _X, _Y, _Z;
+     //double P_W_[3];
+    const double observed_x_, observed_y_;
+    const double   fx_, fy_, cx_, cy_;
+    const double *lensDistort_;
+};
+/*
+@输入找到的2D图角点和3D图角点，PNP找到初值，ceres对初值进行优化
+*/
 void m_calibration_cloud_camera(const vector<cv::Point2f> &pts_2d_, const vector<cv::Point3f> &pts_3d_, string result, Mat cameraMatrix, Mat distCoeffs)
 {
     FileStorage fswrite(result, FileStorage::WRITE);
@@ -57,17 +133,105 @@ void m_calibration_cloud_camera(const vector<cv::Point2f> &pts_2d_, const vector
 	
 	//ba todo
     cv::Rodrigues(r, rvecsMat); // r 为旋转向量形式，用 Rodrigues 公式转换为矩阵
+    cout << "PNP" << endl;
     cout << "r" << endl << r*180.0 / 3.1415926 << endl;
     cout << "rvecsMat" << endl << rvecsMat << endl;
     cout << "tvecsMat" << endl << tvecsMat << endl;
 
-    fswrite << "r" << r*180.0/3.1415926;
-    fswrite << "rvecsMat" << rvecsMat;
-    fswrite << "tvecsMat" << tvecsMat;
+    fswrite << "PNP_r" << r*180.0/3.1415926;
+    fswrite << "PNP_rvecsMat" << rvecsMat;
+    fswrite << "PNP_tvecsMat" << tvecsMat;
+
+
+    cout << "开始评价标定结果………………" << endl;
+    double total_err = 0.0;            // 所有图像的平均误差的总和 
+    double err = 0.0;                  // 每幅图像的平均误差
+    double totalErr = 0.0;
+    double totalPoints = 0.0;
+    vector<Point2f> image_points_pro;     // 保存重新计算得到的投影点
+    vector<vector<Point3f>> object_points_seq;
+    object_points_seq.push_back(pts_3d_);
+
+    projectPoints(object_points_seq[0], r, tvecsMat, cameraMatrix, distCoeffs, image_points_pro);   //通过得到的摄像机内外参数，对角点的空间三维坐标进行重新投影计算
+
+    err = norm(Mat(pts_2d_), Mat(image_points_pro), NORM_L2);
+
+    totalErr += err*err;//SSE
+    totalPoints += object_points_seq[0].size();
+
+    err /= object_points_seq[0].size();
+
+    //ceres
+    double camPose[6] = { r.at<double>(0, 0),r.at<double>(1, 0),r.at<double>(2, 0), 
+        tvecsMat.at<double>(0, 0), tvecsMat.at<double>(1, 0), tvecsMat.at<double>(2, 0)};
+    for (int i = 0; i < 6; i++)
+    {
+        cout << camPose[i] << endl;
+    }
+    
+    double fx_ = cameraMatrix.at<double>(0, 0);
+    double fy_ = cameraMatrix.at<double>(1, 1);
+    double cx_ = cameraMatrix.at<double>(0, 2);
+    double cy_ = cameraMatrix.at<double>(1, 2);
+    double lensDistort[4] = { distCoeffs.at<double>(0,0),distCoeffs.at<double>(0,1), distCoeffs.at<double>(0,2), distCoeffs.at<double>(0,3)};
+    ceres::Problem problem;
+    try
+    {
+        for (int i = 0; i<pts_3d_.size(); ++i)
+        {
+            ceres::CostFunction *costfunction = new ceres::AutoDiffCostFunction<Resection, 2, 6>(new Resection(pts_3d_.at(i).x, pts_3d_.at(i).y, pts_3d_.at(i).z, 
+                                                                                                pts_2d_.at(i).x, pts_2d_.at(i).y, 
+                                                                                                fx_,fy_,cx_,cy_,
+                                                                                                lensDistort));
+            //将残差方程和观测值加入到problem,nullptr表示核函数为无，
+            problem.AddResidualBlock(costfunction, nullptr, camPose);
+        }
+    }
+    catch (...)
+    {
+        cout << "costFunction error" << endl;
+    }
+
+    // 配置求解器
+    ceres::Solver::Options options;     // 这里有很多配置项可以填
+    options.linear_solver_type = ceres::DENSE_QR;  // 增量方程如何求解
+    options.minimizer_progress_to_stdout = true;   // 输出到cout
+                                                   //    options.max_num_iterations=25;
+    ceres::Solver::Summary summary;                // 优化信息
+    chrono::steady_clock::time_point t1 = chrono::steady_clock::now();
+    ceres::Solve(options, &problem, &summary);  // 开始优化
+    chrono::steady_clock::time_point t2 = chrono::steady_clock::now();
+    chrono::duration<double> time_used = chrono::duration_cast<chrono::duration<double>>(t2 - t1);
+    cout << "solve time cost = " << time_used.count() << " seconds. " << endl;
+
+    // 输出结果
+    cout << summary.BriefReport() << endl;
+
+    //save data
+    r.at<double>(0, 0) = camPose[0];
+    r.at<double>(1, 0) = camPose[1];
+    r.at<double>(2, 0) = camPose[2];
+    tvecsMat.at<double>(0, 0) = camPose[3];
+    tvecsMat.at<double>(1, 0) = camPose[4];
+    tvecsMat.at<double>(2, 0) = camPose[5];
+                                                      //ba todo
+    cv::Rodrigues(r, rvecsMat); // r 为旋转向量形式，用 Rodrigues 公式转换为矩阵
+    cout << "CERES" << endl;
+    cout << "r" << endl << r*180.0 / 3.1415926 << endl;
+    cout << "rvecsMat" << endl << rvecsMat << endl;
+    cout << "tvecsMat" << endl << tvecsMat << endl;
+
+    fswrite << "CERES_r" << r*180.0 / 3.1415926;
+    fswrite << "CERES_rvecsMat" << rvecsMat;
+    fswrite << "CERES_tvecsMat" << tvecsMat;
+    fswrite << "CERES_InitialCost" << summary.initial_cost;
+    fswrite << "CERES_FinalCost" << summary.final_cost;;
     fswrite.release();
 
 }
-
+/*
+@读取3D图和2D图，分别找到2D图角点和3D图角点，PNP找到初值，ceres对初值进行优化
+*/
 void main()
 {
     //3D-source
@@ -136,7 +300,7 @@ void main()
     cout << "distCoeffs=" << endl << distCoeffs << endl;
 
 
-    m_calibration_cloud_camera(pts_2d_, pts_3d_, "caliberation_result_cloud-camera_210107.xml", cameraMatrix, distCoeffs);
+    m_calibration_cloud_camera(pts_2d_, pts_3d_, "caliberation_result_cloud-camera_210111_min_Edge_.xml", cameraMatrix, distCoeffs);
 
 
     return;

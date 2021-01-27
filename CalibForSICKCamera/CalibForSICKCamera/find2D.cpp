@@ -1,5 +1,7 @@
 #include "InterfaceForSICK.h"
-
+/*
+@≤‚ ‘‘⁄2DÕº…œ’“Ω«µ„
+*/
 int main2D(int argc, char** argv) {
 
     vector<cv::Point2f> pts_2d_;//out_put
